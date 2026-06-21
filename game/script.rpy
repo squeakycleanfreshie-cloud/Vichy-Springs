@@ -66,17 +66,39 @@ label start:
     nar "Eventually, you arrive at school. You and Lucien have been split up, because you are in seperate classes, so you are all alone"
     nar "The teacher walks into the class. He is wearing glasses, has a round face and messy hair"
     t "Hello class, sorry I'm late."
-    t "We have a new exchange student today. His name is [name]. He will be in this History Class until the end of the year."
+    t "We have a new exchange student today. Their name is [name]. They will be in this History Class until the end of the year."
+    t "Please give him a warm welcome"
+    nar "The class stays silent. Its really awkward"
+    nar "The class countinues, and the teachers talks about WW1 tactics. Before you know it, the bell rings."
+    nar "In the next class, you are with Lucien."
 
+    menu:
+        "Sit next to Lucien?"
 
+        "Sit next to him.":
+            $ lucien += 1
+            jump label_one
 
+        "Sit by yourself.":
+            jump label_two
 
+label label_one:
+    nar "You sit next to Lucien"
+    l "Hey [name] how was history?"
+    pl "It was ok. What about you?"
+    l "Great! I love history lots. And I am with Arthur"
+    pl "Ohh Arthur."
+    nar "You remember lucien breifly talking about arthur earlier"
+    pl "Whats he like?"
+    l "He is really smart, Like really smart."
+    jump after_history_class
 
+label label_two:
+    nar "You sit by yourself."
+    nar "Lucien looks ba"
+    jump after_history_class
 
-
-
-
-
+label after_history_class:
     l "Guys, I found this really cool spot we can go after school."
     l "It's the abandoned Vichy Springs."
     j "Sounds fun, I'm in."
@@ -92,14 +114,3 @@ label start:
             pl "We'll see you tomorrow, Paul."
             $ paul -= 1
             p "Yeah... see you soon."
-
-    j "[name], what's your favourite ice-cream?"
-
-    $ icecream = renpy.input("What is your favourite flavour of ice-cream?")
-    $ icecream = icecream.strip()
-
-    j "[icecream]? Never would've guessed."
-
-    # This ends the game.
-
-    return
