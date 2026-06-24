@@ -281,7 +281,59 @@ label vichy_springs_1:
     p "Agh!"
     p "What was that for?"
     l "I'm sorry. Mistake"
-    p "Ok"
+    p "Ok."
+    nar "You and the group continue walking."
+    nar "Suddenly you hear the group gasp"
+    nar "You look up, and see the sight of the old, abandoned Vichy Springs."
+    nar "The water is a beautiful shade of aqua, steaming with warmth"
+    nar "There are hints of the history this place had before"
+    nar "Stone figures are carved out, and rusted gold rails sit."
+    nar "Everything looks so new and old, at the same time."
+    nar "Untouched from the people for so long."
+    j "Its so beautiful!"
+    p "Yeah"
+    a "We can't tell anyone about this."
+    l "Why?"
+    a "Then everyone will want to go."
+    l "Oh. Who cares? Lets swim!"
+    nar "The boys are hesatative"
+    a "We didn't bring swimmers."
+    l "We don't need swimmers! We can just go in our clothes"
+    a "You really didn't think this through."
+    l "What did you think we were going to do. Sit down and rest?"
+    j "YES! Exacly"
+    l "Buh"
+    l "What do you think, [name]?"
+    menu:
+        "Should you come back tommorow with swimmers?"
+
+        "Go home, come back tommorow for a swim.":
+            $ lucien -= 1
+            pl "I think we should come back tommorow with our swimmers and towels."
+            l "Okay. Can we at least rest here for a while"
+            ajp "Sure"
+            nar "You and the group find a place to rest."
+            nar "You all look at the water glisten."
+            pl "Why are the pumps still on? Somebodys got to be paying for them"
+            a "That is odd."
+            l "The town probably preserves it for historical purposes"
+            a "Then why would they not tell anybody about it?"
+            l "Probably so dumb kids don't ruin it."
+            p "Makes sense."
+            nar "Nobody talks after that, and everybody continues to soak in the glimmering sunlight."
+            
+
+
+        "Go for a swim in you school clothes":
+                pl "I think we should go for a swim. Whats there to loose?"
+                jump vichy_springs_swim_1
+
+label vichy_springs_swim_1
+    ajp "Ok. Lets do this."
+    nar "You "
+    $ lucien += 1
+
+    
 
     
     
