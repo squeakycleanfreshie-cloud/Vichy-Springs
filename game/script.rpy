@@ -19,6 +19,7 @@ default name = "Player"
 default icecream = "vanilla"
 default run = False
 default swim = False
+default karma = 0
 
 label start:
     # TODO: ADD BACKGROUND — bedroom
@@ -410,4 +411,48 @@ label walk_home_from_swim:
             jump walk_home_after_lucien_question
 
 label walk_home_after_lucien_question:
+    nar "You arrive at Luciens home."
+    nar "You go to knock on the door, but Lucien just unlocks it with his key."
+    l "Home, Sweet Home."
+    l "I dibs first shower!"
+    pl "Buh"
+    pl "Arent you supposed to give your exchange student the first priority?"
+    l "Nah."
+    nar "Lucien runs away, and leaves you dripping in your wet clothes"
+    nar "You don't Luciens mum angry when you come home, so you run up to your room to find a towel."
+    nar "You open up a cupboards, and its filled with towels. Lucky."
+    nar "When you pull out a towel, a diary falls out. On the front it reads {i}Luciens Diary{i}"
+    menu:
+        "Will you read the diary?"
+
+        "Read it":
+            nar "You open the dairy to a random page."
+            nar "It reads:"
+            nar "{i}October 7{i}"
+            nar "{i}Today was the first day of the school holidays. I spent the whole day reading.{i}"
+            pl "Hmm"
+            nar "{i}It was a really good day until I went to sleep{i}"
+            nar "{i}I got woken up by a loud sound. I quickly realised that{i}"
+            nar "{i}Dad came home late last night. Mum shouted at him. I think they are getting a divorce.{i}"
+            pl "Woah. Lucien has a lot more going on."
+            nar "You hear lucien coming up the stairs. You pack up the towels and slide his diary back where it was."
+            nar "He walks in on you doing it"
+            l "What are you doing in that cupboard?"
+            pl "Just getting a towel."
+            l "Oh"
+            l "Ok"
+            l "Your turn for the shower. Its down the stairs and to the left of the kitchen"
+            pl "Ok"
+            jump night_time
+        "Respect his privacy":
+            $ karma += 100
+            nar "You grab a towel and put the diary where it belonged."
+            nar "You hear lucien walking up the stairs."
+            l "Hey [name]"
+            pl "Hi"
+            jump night_time
+        
+label night_time
+    l "Your turn for the shower. Its down the stairs and to the left of the kitchen"
+    pl "Ok"
     
