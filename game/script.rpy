@@ -18,6 +18,7 @@ default jaques = 0
 default name = "Player"
 default icecream = "vanilla"
 default run = False
+default swim = False
 
 label start:
     # TODO: ADD BACKGROUND — bedroom
@@ -203,9 +204,8 @@ label morning_tea_1:
     nar "You walk over to the group."
     # TODO: ADD SPRITES — Arthur, Jaques, Paul
     l "Hey guys, this is [name]. They're the exchange student my family is hosting for a year."
-    a "Hello!"
-    j "Hello!"
-    p "Hello."
+    ajp "Hello!"
+    # NOTE: Paul's hello should be flatter/quieter than Arthur and Jaques — consider a separate line for him
     pl "Hey everyone."
     l "Guys, I was telling [name] about this really cool spot I found that we can go to after school."
     nar "Everyone looks at Lucien with interest — but Paul just stares at the ground."
@@ -224,7 +224,7 @@ label morning_tea_1:
     l "Everyone, meet out the front of school. We'll head off straight away."
     nar "The boys continue giggling and talking."
     nar "Eventually, the bell rings for class and everyone packs up."
-    # TODO: ADD BACKGROUND — end of school / afternoon
+    # TODO: ADD BACKGROUND — school exterior, afternoon
     # TODO: REMOVE — Arthur, Jaques, Paul sprites
     nar "The day and classes pass, and before you know it, it's the end of school."
     nar "You go meet Lucien and his friends outside the front of the school."
@@ -233,114 +233,181 @@ label morning_tea_1:
     l "Hey, [name]!"
     l "Ready to leave?"
     pl "Yeah."
-    nar "You and the boys take the walk through the beautiful streets of Vichy"
-    # TODO: NEXT SCENE — Streets of Vichy 
-    nar "You enjoy looking at the [lucien_answer]s arcitecture."
-    pl "So how long have all of you known eachother?"
-    l "Since we were like, 6. We all grew up on the same street"
+    # TODO: ADD BACKGROUND — streets of Vichy
+    # TODO: ADD SPRITES — all four boys walking
+    nar "You and the boys take the walk through the beautiful streets of Vichy."
+    nar "You enjoy looking at the architecture."
+    pl "So how long have all of you known each other?"
+    l "Since we were like, six. We all grew up on the same street."
     a "Yeah."
     j "Lucien cried on the first day of school, and Arthur had to calm him down."
-    l "That is not true"
+    l "That is not true."
     a "It is a little."
-    nar "Paul smiles a little bit."
-    l "Okay moving on."
-    pl "What do you guys usally do after school?"
-    j "We all go home and study."
-    l "And I always want to hang out, but nobody ever wants to."
-    a "We all are too busy hang out after school"
-    l "After today, you will want to hang out, every day."
-    nar "You notice that Paul isn't listening"
+    nar "Paul smiles at that — just a little."
+    l "Okay, moving on."
+    pl "What do you guys usually do after school?"
+    j "Nothing really."
+    p "We usually just hang around the quad or go to Lucien's."
+    l "Which is why the springs will be so fun. Something actually different."
+    nar "Paul goes quiet and looks away."
     menu:
-        "Do you ask Paul if he is okay?"
-        
-        "Ask him if he is ok.":
+        "Do you say anything to Paul?"
+
+        "Ask if he's okay.":
             $ paul += 1
-            pl "Paul, you okay?"
-            p "Yeah, I'm just a bit tired."
-            pl "Cool"
-            jump vichy_springs_1
+            pl "You alright, Paul?"
+            p "Yeah. Fine."
+            nar "He doesn't look fine. But he gives you a small nod — like he appreciated being asked."
+            jump vichy_springs_approach
 
+        "Leave it.":
+            nar "Nobody else seemed to notice anyway."
+            jump vichy_springs_approach
 
-        "Ignore it":
-            "Nobody seems to notice anyway, so its fine"
-            jump vichy_springs_1
-
-label vichy_springs_1:
-    nar "You arrive a bushy deadend."
-    a "Whats this lucien?"
-    j "Yeah where are we"
-    l "Okay, I didn't tell anyone but we are going to have to work out way through the bush."
+label vichy_springs_approach:
+    # TODO: ADD BACKGROUND — bushy dead end / forest edge
+    nar "You arrive at a bushy dead end."
+    a "What's this, Lucien?"
+    j "Yeah, where are we?"
+    l "Okay, I didn't tell anyone, but we are going to have to work our way through the bush."
     ajp "Lucien!"
-    l "It fine, its only like 200 meters"
+    l "It's fine, it's only like 200 metres."
     ajp "Okay."
     nar "Everyone looks a bit grumpy."
-    l "Okay lets go!"
-    nar "you and the group trunch through the thick bush"
-    nar "Lucien is at the front of the group, holding back the bushes for everyone"
-    nar "He accedently lets go of one and it hits Paul in the face."
+    l "Okay, let's go!"
+    # TODO: ADD BACKGROUND — dense bush / pushing through trees
+    nar "You and the group trudge through the thick bush."
+    nar "Lucien is at the front, holding back branches for everyone."
+    nar "He accidentally lets go of one and it hits Paul in the face."
     p "Agh!"
     p "What was that for?"
-    l "I'm sorry. Mistake"
-    p "Ok."
+    l "I'm sorry. Mistake."
+    p "Okay."
     nar "You and the group continue walking."
-    nar "Suddenly you hear the group gasp"
-    nar "You look up, and see the sight of the old, abandoned Vichy Springs."
-    nar "The water is a beautiful shade of aqua, steaming with warmth"
-    nar "There are hints of the history this place had before"
-    nar "Stone figures are carved out, and rusted gold rails sit."
-    nar "Everything looks so new and old, at the same time."
-    nar "Untouched from the people for so long."
-    j "Its so beautiful!"
-    p "Yeah"
+    nar "Suddenly, you hear the group gasp."
+    # TODO: ADD BACKGROUND — Vichy Springs reveal (wide shot, aqua water, steam, stone figures, rusted gold rails)
+    nar "You look up and see the old, abandoned Vichy Springs."
+    nar "The water is a beautiful shade of aqua, steaming with warmth."
+    nar "There are hints of the history this place once had."
+    nar "Stone figures are carved out, and rusted gold rails sit at the edges."
+    nar "Everything looks so new and old at the same time."
+    nar "Untouched by people for so long."
+    j "It's so beautiful."
+    p "Yeah."
     a "We can't tell anyone about this."
     l "Why?"
-    a "Then everyone will want to go."
-    l "Oh. Who cares? Lets swim!"
-    nar "The boys are hesatative"
+    a "Then everyone will want to come."
+    l "Oh. Who cares? Let's swim!"
+    nar "The boys hesitate."
     a "We didn't bring swimmers."
-    l "We don't need swimmers! We can just go in our clothes"
+    l "We don't need swimmers. We can just go in our clothes."
     a "You really didn't think this through."
-    l "What did you think we were going to do. Sit down and rest?"
-    j "YES! Exacly"
-    l "Buh"
+    l "What did you think we were going to do — sit down and rest?"
+    j "Yes! Exactly."
+    l "Buh—"
     l "What do you think, [name]?"
     menu:
-        "Should you come back tommorow with swimmers?"
+        "What do you do?"
 
-        "Go home, come back tommorow for a swim.":
+        "Go home, come back tomorrow with swimmers.":
             $ lucien -= 1
-            pl "I think we should come back tommorow with our swimmers and towels."
-            l "Okay. Can we at least rest here for a while"
-            ajp "Sure"
-            nar "You and the group find a place to rest."
+            $ swim = False
+            pl "I think we should come back tomorrow with our swimmers and towels."
+            l "Okay. Can we at least rest here for a while?"
+            ajp "Sure."
+            nar "You and the group find a place to sit."
             nar "You all look at the water glisten."
-            pl "Why are the pumps still on? Somebodys got to be paying for them"
+            pl "Why are the pumps still on? Somebody's got to be paying for them."
             a "That is odd."
-            l "The town probably preserves it for historical purposes"
-            a "Then why would they not tell anybody about it?"
+            l "The town probably preserves it for historical purposes."
+            a "Then why would they not tell anyone about it?"
             l "Probably so dumb kids don't ruin it."
             p "Makes sense."
-            nar "Nobody talks after that, and everybody continues to soak in the glimmering sunlight."
-            
+            nar "Nobody talks after that. Everyone soaks in the glimmering afternoon light."
+            nar "Paul dips his hands in the water."
+            p "Its really warm."
+            j "Don't worry Paul, We will go in tommorow."
+            nar "You notice that the boys treat Paul like a younger brother."
+            l "Time to Go."
+            a "Aghh OK."
+            nar "You and the boys get up and begin to walk home"
+            jump walk_home_from_swim
+            # TODO: NEXT SCENE — walk home / next day return
 
+        "Go for a swim in your school clothes.":
+            $ lucien += 1
+            pl "I think we should just go for it. What's there to lose?"
+            jump vichy_springs_swim_1
 
-        "Go for a swim in you school clothes":
-                pl "I think we should go for a swim. Whats there to loose?"
-                jump vichy_springs_swim_1
+label vichy_springs_swim_1:
+    ajp "Okay. Let's do this."
+    # TODO: ADD BACKGROUND — boys at water's edge, about to jump in
+    nar "One by one, everyone kicks off their shoes."
+    nar "Lucien is the first one in — no hesitation."
+    l "Come on!"
+    nar "Arthur follows, slowly. The water reaches his waist before anyone else is even in."
+    nar "Jaques cannonballs in, drenching everyone."
+    ajp "Jaques!"
+    j "Worth it."
+    nar "You look over at Paul. He's still standing at the edge, looking at the water."
+    menu:
+        "Do you say anything to Paul?"
 
-label vichy_springs_swim_1
-    ajp "Ok. Lets do this."
-    nar "You "
-    $ lucien += 1
+        "Wave him in.":
+            $ paul += 1
+            pl "Come on, Paul."
+            nar "He looks at you for a second. Then steps in."
+            p "It's warm."
+            pl "Yeah."
+            nar "He doesn't say anything else. But he stays close to you."
+            jump vichy_springs_swim_2
 
+        "Jump in yourself.":
+            nar "You jump in. Paul watches from the edge a moment longer, then steps in quietly on his own."
+            jump vichy_springs_swim_2
+
+label vichy_springs_swim_2:
+    # TODO: ADD BACKGROUND — in the water, golden afternoon light, steam rising
+    nar "The water is perfect. Warm, clear, still."
+    nar "For a while, nobody says anything. You all just float."
+    l "I told you."
+    a "Yeah. You told us."
+    nar "Even Jaques doesn't have a comeback for that."
+    nar "The sun starts to dip behind the trees."
+    l "We should probably head back."
+    nar "Nobody moves straight away."
+    nar "Nobody wants to be the first to leave."
+    nar "Eventually you all get out and walk back home."
+    a "That was incredible"
+    j "Yeah, thanks lucien"
+    l "Your welcome. Can we go again tommorow?"
+    ajp "Yes!"
+    jump walk_home_from_swim
+
+label walk_home_from_swim:
+    nar "You and the boys walk home."
+    nar "Eventually, everyone reaches a point where they have to split up."
+    l "Come on [name], its time to go."
+    pl "Bye everyone."
+    ajp "Bye [name]! See you tommorow"
+    nar "You and Lucien walk away."
+    l "Well thats my freind group."
+    pl "There a nice bunch of people. But I have a question-"
+    menu:
+        "Ask Lucien why everyone treats Paul like that"
+
+        "Ask Him":
+            $ lucien -= 1
+            pl "Why does everyone ignore Paul."
+            l "We don't ignore him! Thats just how we always treat him."
+            l "And he is fine with it."
+            pl "Oh. Okay."
+            jump walk_home_after_lucien_question
+
+        "Ignore it":
+            pl "Nevermind."
+            l "Oh. Ok."
+            jump walk_home_after_lucien_question
+
+label walk_home_after_lucien_question:
     
-
-    
-    
-
-
-
-    
-    
-
-   
