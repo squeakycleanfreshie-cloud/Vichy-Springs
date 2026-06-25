@@ -12,6 +12,36 @@ define ta = Character("Ms Dubois")
 define ajp = Character("Arthur, Jaques & Paul")
 define h = Character("Harriet")
 
+transform far_left:
+    xalign 0.15
+    yalign 1.0
+
+transform left_mid:
+    xalign 0.30
+    yalign 1.0
+
+transform center_mid:
+    xalign 0.50
+    yalign 1.0
+
+transform right_mid:
+    xalign 0.70
+    yalign 1.0
+
+transform far_right:
+    xalign 0.85
+    yalign 1.0
+
+image lucien = im.FactorScale("lucien.png", 2)
+image arthur = im.FactorScale("arthur.png", 2)
+image paul = im.FactorScale("paul.png", 2)
+image jaques = "jaques.png"
+image josette = im.FactorScale("josette.png", 2)
+image harriet = "harriet.png"
+image mrpernette = "mrpernette.png"
+image msdubois = "msdubois.png"
+image verrain = "verrain.png"
+
 default paul = 0
 default lucien = 0
 default arthur = 0
@@ -30,7 +60,7 @@ label start:
     nar "You get out of bed and get ready to walk downstairs."
     nar "You walk down the stairs, and catch a glimpse of your exchange family's mum."
     # TODO: ADD BACKGROUND — living room
-    # TODO: ADD SPRITE — Josette
+    show josette at center
     mu "How did you sleep, darling!"
     pl "Okay... I woke up a couple of times."
     mu "Lucien is still in his room, but he should be coming down soon."
@@ -40,7 +70,7 @@ label start:
     pl "Delicious."
     nar "You sit down at the table. It's awkward — you only met your family last night."
     nar "After what feels like 30 minutes of silence, Lucien finally walks down the stairs."
-    # TODO: ADD SPRITE — Lucien
+    show lucien at left
     l "Hello... what was your name again?"
     nar "Lucien's mum gives him a stern look."
 
@@ -56,7 +86,7 @@ label start:
     nar "You finish your pancakes and pack your bag, meeting Lucien at the door."
     l "Took you long enough! We are late, let's go!"
     # TODO: ADD BACKGROUND — street
-    # TODO: REMOVE — Josette sprite
+    hide josette
     nar "You and Lucien walk to school."
     l "Why did you choose to exchange to France?"
     pl "I wanted to get away from my family for a year."
@@ -72,18 +102,19 @@ label start:
     pl "Cool."
     nar "You and Lucien finish walking to school."
     # TODO: ADD BACKGROUND — school exterior
-    # TODO: REMOVE — Lucien sprite
+    hide lucien
     nar "Eventually, you arrive at school. You and Lucien have been split up because you're in separate classes, so you are all alone."
     nar "The teacher walks into the class."
     # TODO: ADD BACKGROUND — classroom
-    # TODO: ADD SPRITE — Mr Pernette
+    show mrpernette at center
     t "Hello class, sorry I'm late."
     t "We have a new exchange student today. Their name is [name]. They will be in this History class until the end of the year."
     t "Please give them a warm welcome."
     nar "The class stays silent. It's really awkward."
     nar "The class continues, and the teacher talks about WWI tactics. Before you know it, the bell rings."
     nar "In the next class, you are with Lucien."
-    # TODO: ADD SPRITE — Lucien
+    show lucien at left
+    hide mrpernette
 
     menu:
         "Sit next to Lucien?"
@@ -116,12 +147,13 @@ label label_one:
 
     pl "[lucien_answer]."
     l "Oh, that's crazy! A lot of Vichy was built around that time."
-    # TODO: ADD SPRITE — Ms Dubois
-    # TODO: REMOVE — Mr Pernette sprite
+    show msdubois at center
+    hide lucien
     ta "Welcome everyone to English."
     nar "Ms Dubois writes something on the board."
     nar "{i}The Invisible Man{/i}"
     ta "Today we are discussing {i}The Invisible Man{/i} — a character who is, by the end of the novel, completely invisible to the other characters in the book."
+    show lucien at left
     l "That's kind of sad."
     ta "It is."
     ta "Today I'm giving you your books. Please read to chapter three before the bell goes."
@@ -145,8 +177,8 @@ label label_two:
             l "Ohhh [name], I fully understand! Charlotte is a very pretty girl!"
             nar "You walk back to your seat, and Lucien watches you sit next to Charlotte, grinning."
             nar "He winks at you and turns back to focus."
-            # TODO: ADD SPRITE — Ms Dubois
-            # TODO: REMOVE — Mr Pernette sprite
+            show msdubois at center
+            hide lucien
             ta "Welcome everyone to English."
             nar "Ms Dubois writes something on the board."
             nar "{i}The Invisible Man{/i}"
@@ -170,6 +202,8 @@ label label_two:
             nar "The clouds drift slowly."
             nar "Before you know it, it is time for lunch."
             nar "You catch up with Lucien before he walks out the door."
+            show msdubois at center
+            hide lucien
             pl "I'm sorry."
             l "Why would you ditch me like that. What did I even do?"
             pl "I just wanted to meet new people, you know. I'm sorry."
@@ -182,7 +216,9 @@ label label_two:
 
 label morning_tea:
     # TODO: ADD BACKGROUND — school quad
-    # TODO: REMOVE — all classroom sprites
+    hide msdubois
+    hide lucien
+    show lucien at left
     nar "You and Lucien walk to the outdoor playground."
     l "This is the Quad. Everyone plays soccer, handball, and basketball here."
     pl "Do you like any of those sports?"
@@ -205,10 +241,11 @@ label morning_tea:
 label morning_tea_1:
     nar "Lucien waves at a group of three boys sitting at a bench."
     nar "You walk over to the group."
-    # TODO: ADD SPRITES — Arthur, Jaques, Paul
+    show arthur at right
+    show jaques at right
+    show paul at center
     l "Hey guys, this is [name]. They're the exchange student my family is hosting for a year."
     ajp "Hello!"
-    # NOTE: Paul's hello should be flatter/quieter than Arthur and Jaques — consider a separate line for him
     pl "Hey everyone."
     l "Guys, I was telling [name] about this really cool spot I found that we can go to after school."
     nar "Everyone looks at Lucien with interest — but Paul just stares at the ground."
@@ -228,16 +265,20 @@ label morning_tea_1:
     nar "The boys continue giggling and talking."
     nar "Eventually, the bell rings for class and everyone packs up."
     # TODO: ADD BACKGROUND — school exterior, afternoon
-    # TODO: REMOVE — Arthur, Jaques, Paul sprites
+    hide arthur
+    hide jaques
+    hide paul
     nar "The day and classes pass, and before you know it, it's the end of school."
     nar "You go meet Lucien and his friends outside the front of the school."
+    show arthur at left
+    show jaques at right
+    show paul at center
     nar "They're all waiting there."
     pl "What's up, guys."
     l "Hey, [name]!"
     l "Ready to leave?"
     pl "Yeah."
     # TODO: ADD BACKGROUND — streets of Vichy
-    # TODO: ADD SPRITES — all four boys walking
     nar "You and the boys take the walk through the beautiful streets of Vichy."
     nar "You enjoy looking at the architecture."
     pl "So how long have all of you known each other?"
@@ -288,13 +329,21 @@ label vichy_springs_approach:
     p "Okay."
     nar "You and the group continue walking."
     nar "Suddenly, you hear the group gasp."
-    # TODO: ADD BACKGROUND — Vichy Springs reveal (wide shot, aqua water, steam, stone figures, rusted gold rails)
+    # TODO: ADD BACKGROUND — Vichy Springs reveal
+    hide arthur
+    hide jaques
+    hide paul
+    hide lucien
     nar "You look up and see the old, abandoned Vichy Springs."
     nar "The water is a beautiful shade of aqua, steaming with warmth."
     nar "There are hints of the history this place once had."
     nar "Stone figures are carved out, and rusted gold rails sit at the edges."
     nar "Everything looks so new and old at the same time."
     nar "Untouched by people for so long."
+    show jaques at left
+    show paul at center
+    show arthur at right
+    show lucien at far_left
     j "It's so beautiful."
     p "Yeah."
     a "We can't tell anyone about this."
@@ -329,13 +378,16 @@ label vichy_springs_approach:
             nar "Nobody talks after that. Everyone soaks in the glimmering afternoon light."
             nar "Paul dips his hands in the water."
             p "Its really warm."
-            j "Don't worry Paul, We will go in tommorow."
+            j "Don't worry Paul, We will go in tomorrow."
             nar "You notice that the boys treat Paul like a younger brother."
             l "Time to Go."
             a "Aghh OK."
-            nar "You and the boys get up and begin to walk home"
+            nar "You and the boys get up and begin to walk home."
+            hide arthur
+            hide jaques
+            hide paul
+            hide lucien
             jump walk_home_from_swim
-            # TODO: NEXT SCENE — walk home / next day return
 
         "Go for a swim in your school clothes.":
             $ lucien += 1
@@ -344,7 +396,6 @@ label vichy_springs_approach:
 
 label vichy_springs_swim_1:
     ajp "Okay. Let's do this."
-    # TODO: ADD BACKGROUND — boys at water's edge, about to jump in
     nar "One by one, everyone kicks off their shoes."
     nar "Lucien is the first one in — no hesitation."
     l "Come on!"
@@ -371,9 +422,15 @@ label vichy_springs_swim_1:
 
 label vichy_springs_swim_2:
     # TODO: ADD BACKGROUND — in the water, golden afternoon light, steam rising
+    hide arthur
+    hide jaques
+    hide paul
+    hide lucien
     nar "The water is perfect. Warm, clear, still."
     nar "For a while, nobody says anything. You all just float."
+    show lucien at left
     l "I told you."
+    show arthur at right
     a "Yeah. You told us."
     nar "Even Jaques doesn't have a comeback for that."
     nar "The sun starts to dip behind the trees."
@@ -381,201 +438,275 @@ label vichy_springs_swim_2:
     nar "Nobody moves straight away."
     nar "Nobody wants to be the first to leave."
     nar "Eventually you all get out and walk back home."
-    a "That was incredible"
-    j "Yeah, thanks lucien"
-    l "Your welcome. Can we go again tommorow?"
+    a "That was incredible."
+    j "Yeah, thanks Lucien."
+    l "You're welcome. Can we go again tomorrow?"
     ajp "Yes!"
+    hide arthur
+    hide jaques
+    hide paul
+    hide lucien
     jump walk_home_from_swim
 
 label walk_home_from_swim:
+    # TODO: ADD BACKGROUND — streets of Vichy, evening
+    show lucien at center
     nar "You and the boys walk home."
     nar "Eventually, everyone reaches a point where they have to split up."
     l "Come on [name], its time to go."
     pl "Bye everyone."
-    ajp "Bye [name]! See you tommorow"
+    ajp "Bye [name]! See you tomorrow."
+    hide arthur
+    hide jaques
+    hide paul
     nar "You and Lucien walk away."
-    l "Well thats my freind group."
-    pl "There a nice bunch of people. But I have a question-"
+    l "Well that's my friend group."
+    pl "They're a nice bunch of people. But I have a question—"
     menu:
         "Ask Lucien why everyone treats Paul like that"
 
-        "Ask Him":
+        "Ask him.":
             $ lucien -= 1
-            pl "Why does everyone ignore Paul."
-            l "We don't ignore him! Thats just how we always treat him."
+            pl "Why does everyone ignore Paul?"
+            l "We don't ignore him! That's just how we always treat him."
             l "And he is fine with it."
             pl "Oh. Okay."
             jump walk_home_after_lucien_question
 
-        "Ignore it":
+        "Ignore it.":
             pl "Nevermind."
             l "Oh. Ok."
             jump walk_home_after_lucien_question
 
 label walk_home_after_lucien_question:
-    nar "You arrive at Luciens home."
+    # TODO: ADD BACKGROUND — home exterior
+    nar "You arrive at Lucien's home."
     nar "You go to knock on the door, but Lucien just unlocks it with his key."
     l "Home, Sweet Home."
     l "I dibs first shower!"
-    pl "Buh"
-    pl "Arent you supposed to give your exchange student the first priority?"
+    pl "But aren't you supposed to give your exchange student first priority?"
     l "Nah."
-    nar "Lucien runs away, and leaves you dripping in your wet clothes"
-    nar "You don't Luciens mum angry when you come home, so you run up to your room to find a towel."
-    nar "You open up a cupboards, and its filled with towels. Lucky."
-    nar "When you pull out a towel, a diary falls out. On the front it reads {i}Luciens Diary{i}"
+    hide lucien
+    nar "Lucien runs away, and leaves you dripping in your wet clothes."
+    nar "You don't want to make Lucien's mum angry, so you run up to your room to find a towel."
+    nar "You open a cupboard, and it's filled with towels. Lucky."
+    nar "When you pull out a towel, a diary falls out. On the front it reads {i}Lucien's Diary{/i}."
     menu:
         "Will you read the diary?"
 
-        "Read it":
-            nar "You open the dairy to a random page."
+        "Read it.":
+            nar "You open the diary to a random page."
             nar "It reads:"
-            nar "{i}October 7{i}"
-            nar "{i}Today was the first day of the school holidays. I spent the whole day reading.{i}"
-            pl "Hmm"
-            nar "{i}It was a really good day until I went to sleep{i}"
-            nar "{i}I got woken up by a loud sound. I quickly realised that{i}"
-            nar "{i}Dad came home late last night. Mum shouted at him. I think they are getting a divorce.{i}"
+            nar "{i}October 7{/i}"
+            nar "{i}Today was the first day of the school holidays. I spent the whole day reading.{/i}"
+            pl "Hmm."
+            nar "{i}It was a really good day until I went to sleep.{/i}"
+            nar "{i}I got woken up by a loud sound. I quickly realised that{/i}"
+            nar "{i}Dad came home late last night. Mum shouted at him. I think they are getting a divorce.{/i}"
             pl "Woah. Lucien has a lot more going on."
-            nar "You hear lucien coming up the stairs. You pack up the towels and slide his diary back where it was."
-            nar "He walks in on you doing it"
+            show lucien at center
+            nar "You hear Lucien coming up the stairs. You pack up the towels and slide his diary back where it was."
+            nar "He walks in on you doing it."
             l "What are you doing in that cupboard?"
             pl "Just getting a towel."
-            l "Oh"
-            l "Ok"
-            l "Your turn for the shower. Its down the stairs and to the left of the kitchen"
-            pl "Ok"
+            l "Oh."
+            l "Ok."
             jump night_time
-        "Respect his privacy":
+
+        "Respect his privacy.":
             $ karma += 100
             nar "You grab a towel and put the diary where it belonged."
-            nar "You hear lucien walking up the stairs."
-            l "Hey [name]"
-            pl "Hi"
+            show lucien at center
+            nar "You hear Lucien walking up the stairs."
+            l "Hey [name]."
+            pl "Hi."
             jump night_time
-        
-label night_time
-    l "Your turn for the shower. Its down the stairs and to the left of the kitchen"
-    pl "Ok"
-    nar "You have a shower and get changed. You are coming out of the bathroom and see Lucien in the living room."
-    pl "Wheres your mum and dad?"
+
+label night_time:
+    # TODO: ADD BACKGROUND — living room, night
+    l "Your turn for the shower. It's down the stairs and to the left of the kitchen."
+    pl "Ok."
+    hide lucien
+    nar "You have a shower and get changed. You come out of the bathroom and see Lucien in the living room."
+    show lucien at center
+    pl "Where's your mum and dad?"
     l "Mum works at the local cafe, she should be back in 15 minutes, and dad works late."
-    pl "Whats his job?"
-    l "I umm- don't really know"
-    l "He is very vauge about it."
-    pl "You should ask him tongight"
+    pl "What's his job?"
+    l "I umm— don't really know."
+    l "He is very vague about it."
+    pl "You should ask him tonight."
     l "Maybe not."
     pl "Oh."
     pl "Can we do something?"
     l "Like what?"
     pl "A board game or something like that."
     l "Sure."
+    hide lucien
     nar "You and Lucien walk upstairs and look under his bed."
-    l "I have cluedu, munopolee, or junga."
+    show lucien at center
+    l "I have Cluedo, Monopoly, or Jenga."
     menu:
         "Which game do you choose?"
 
-        "Cluedu":
-            pl "I choose Cluedu"
-            l "Great Choice, my favourite."
+        "Cluedo":
+            pl "I choose Cluedo."
+            l "Great choice, my favourite."
+            hide lucien
             nar "Lucien grabs the game and you head downstairs."
             nar "He sets up the game and puts it out onto the table."
-            l "Oh shucks,"
+            show lucien at center
+            l "Oh shucks."
             pl "What?"
             l "We need three people to play."
             pl "Dang it."
-            l "We could ask my sister-"
+            l "We could ask my sister—"
             l "But she wouldn't want to play."
-            pl "No, lets try."
-            l "Ok, shes not going to say yes if I ask, but if you ask she will."
-            l "Her room is next to mine. Good Luck"
-            nar "Lucien follows you upstairs and hides behind corner. He makes a thumbs up towards you."
+            pl "No, let's try."
+            l "Ok, she's not going to say yes if I ask, but if you ask she will."
+            l "Her room is next to mine. Good luck."
+            hide lucien
+            nar "Lucien follows you upstairs and hides behind a corner. He makes a thumbs up towards you."
             nar "You knock on the door."
+            show harriet at center
             nar "A teen girl opens the door."
             h "Hello?"
-            pl "Hey, my name is [name], I'm the exchange student your hosting."
-            h "oh. what do you want?"
-            pl "I was wondering if you would like to play Cluedu with us since we don't have enough players?"
+            pl "Hey, my name is [name], I'm the exchange student you're hosting."
+            h "Oh. What do you want?"
+            pl "I was wondering if you would like to play Cluedo with us since we don't have enough players?"
             h "Umm."
             h "Sure. This better be quick though."
-            nar "You and Luciens sister walk downstairs"
+            hide harriet
+            nar "You and Lucien's sister walk downstairs."
+            show lucien at left
+            show harriet at right
             nar "Lucien is waiting downstairs."
             nar "You all sit down."
             l "Who wants to be dealer?"
-            nar "Nobody answers"
+            nar "Nobody answers."
             l "Sure, I will."
-            nar "Lucien deals everyone some card and a sheet."
+            nar "Lucien deals everyone some cards and a sheet."
             nar "You play the game collecting evidence."
             l "I have the murderer! I know who did it."
-            nar "Its not his turn yet, so you have a chance to guess the murderer before him."
-            nar "You worry, you are pretty close, but can't quite pin the nail on the head."
+            nar "It's not his turn yet, so you have a chance to guess the murderer before him."
+            nar "You worry — you are pretty close, but can't quite pin the nail on the head."
             menu:
                 "Do you take a chance and guess?"
 
-                "Take a chance":
-                    l "I guess Mr.Lonchan in the Basement, with the Cheese wheel."
+                "Take a chance.":
+                    l "I guess Mr. Lonchan in the Basement, with the Cheese wheel."
                     nar "You open the answer pouch and look inside."
                     l "I got it correct!"
                     h "Oh no. I gotta go back to my room now."
-                    l "Please don't go- One more round?"
-                    nar "She is about to answer when you hear a knocking on the door."
-                    nar "Harriet looks up at lucien"
-                    h "Saved by mum"
+                    l "Please don't go — one more round?"
+                    nar "She is about to answer when you hear a knocking at the door."
+                    nar "Harriet looks up at Lucien."
+                    h "Saved by mum."
+                    hide harriet
                     nar "She runs up to her room."
-                    nar "You and lucien go to the door to let her in."
-                    mu "Hey boys! How was school."
+                    nar "You and Lucien go to the door to let her in."
+                    show josette at center
+                    hide lucien
+                    mu "Hey boys! How was school?"
+                    show lucien at left
                     l "Good."
                     mu "Good to hear!"
                     mu "I'm going to make dinner."
-                    l "ok"
+                    l "Ok."
+                    hide josette
                     nar "You and Lucien walk back to the game and pack it up."
+                    pl "That was fun."
+                    l "Yeah."
+                    l "Want to watch TV?"
+                    pl "Sure. Whatever you want."
+                    nar "You and Lucien sit down on the couch and he turns on the TV."
+                    nar "He puts on a nature documentary and you wait until dinner time."
                     jump after_game
 
-                "Let lucien win":
+                "Let Lucien win.":
                     $ game = True
-                    nar "You roll the dice, and pick a clue card up"
+                    $ lucien -= 1
+                    nar "You roll the dice, and pick a clue card up."
                     nar "It reads:"
-                    nar "{i}Verrain opens up when you reveal your deepest secret{i}"
-                    pl "Hmm Thats odd."
+                    nar "{i}Verrain opens up when you reveal your deepest secret{/i}"
+                    pl "Hmm. That's odd."
                     l "What is it?"
-                    pl "The card just says something ive never seen before."
+                    pl "The card just says something I've never seen before."
                     l "What does it say?"
                     pl "Verra-, Verrain opens up when you reveal..."
                     pl "Your deepest secret?"
-                    l "Thats really weird."
+                    l "That's really weird."
                     l "Was it you, Harriet?"
                     h "Nope."
-                    l "Hmm. Must just be apart of the game."
-                    pl "That means that you have to answer it."
-                    l "What! No."
-                    pl "Come on, its the rules."
-                    h "Yeah Lucien"
-                    nar "Harriet says this in a mocking voice"
+                    l "Hmm. Must just be part of the game."
+                    pl "That means you have to answer it."
+                    l "What? No."
+                    pl "Come on, it's the rules."
+                    h "Yeah, Lucien."
+                    nar "Harriet says this in a mocking voice."
                     l "Fine."
                     l "I genuinely think I'm a bad friend sometimes. But I don't know why."
-                    nar "Nobody Answers."
+                    nar "Nobody answers."
                     l "Forget I said anything."
-                    h "Thats your secret. Thats it?"
-                    l "What did you want to hear Harriet?"
-                    nar "He laughs it off."
+                    h "That's your secret? That's it?"
+                    l "What did you want to hear, Harriet?"
+                    nar "He laughs it off. But he doesn't look at you when he says it."
                     nar "A knock sounds at the door."
-                    l "Can you get it Harriet. Please."
+                    l "Can you get it, Harriet. Please."
                     h "Fine."
+                    hide harriet
                     nar "Lucien looks like he is about to cry as he packs up the game."
+                    hide lucien
                     nar "He runs up to his room."
-                    pl "Lucien Wait -"
+                    pl "Lucien, wait—"
                     nar "He ignores you."
-                    mu "All ok [name]"
-                    nar "Luciens mum notices you sitting alone."
-                    pl "Yeah. Whats for dinner?"
-                    mu "Onion Soup and Soufles."
-                    pl "Delicous."
+                    show josette at center
+                    mu "All ok, [name]?"
+                    nar "Lucien's mum notices you sitting alone."
+                    pl "Yeah. What's for dinner?"
+                    mu "Onion soup and soufflés."
+                    pl "Delicious."
+                    hide josette
+                    nar "You go and lie down on the couch and wait for dinner time."
+                    jump after_game
 
+        "Monopoly":
+            show lucien at center
+            l "This is going to take forever."
+            pl "What, you don't like Monopoly?"
+            l "It's not that I don't like it, it just takes too long."
+            pl "Oh okay. Well it's my favourite so we are playing it."
+            hide lucien
+            nar "You and Lucien walk downstairs and set up the game."
+            show lucien at center
+            l "I bags the dog."
+            pl "Oh. Good choice."
+            pl "Do you have any pets?"
+            l "I used to have a dog. Gaston."
+            pl "Awwww."
+            l "He died a few years ago."
+            l "Anyways, let's play."
+            nar "You begin to play. But what is your strategy?"
+            menu:
+                "What's your strategy?"
 
+                "Buy all the houses.":
+                    nar "You lock in and spend all your money on different collections."
+                    nar "Lucien grabs the dice and rolls them."
+                    nar "He moves his player onto one of your properties."
+                    pl "Better pay up."
+                    l "This is the real reason I hate Monopoly. I always lose!"
+                    $ lucien += 1
+                    nar "You and Lucien laugh while you play."
+                    nar "In the end, you have most of the properties and sets."
+                    l "I guess you win."
+                    pl "Yeah."
+                    jump after_game
 
-        "Munopolee":
+                "Save your money.":
+                    jump after_game
 
-        "Junga":
-
+        "Jenga":
+            jump after_game
 
 label after_game:
+    # TODO: NEXT SCENE — dinner, then end of day 1
