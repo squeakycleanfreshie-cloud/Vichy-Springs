@@ -10,6 +10,7 @@ define b = Character("Budak")
 define t = Character("Mr Pernette")
 define ta = Character("Ms Dubois")
 define ajp = Character("Arthur, Jaques & Paul")
+define h = Character("Harriet")
 
 default paul = 0
 default lucien = 0
@@ -455,4 +456,56 @@ label walk_home_after_lucien_question:
 label night_time
     l "Your turn for the shower. Its down the stairs and to the left of the kitchen"
     pl "Ok"
-    
+    nar "You have a shower and get changed. You are coming out of the bathroom and see Lucien in the living room."
+    pl "Wheres your mum and dad?"
+    l "Mum works at the local cafe, she should be back in 15 minutes, and dad works late."
+    pl "Whats his job?"
+    l "I umm- don't really know"
+    l "He is very vauge about it."
+    pl "You should ask him tongight"
+    l "Maybe not."
+    pl "Oh."
+    pl "Can we do something?"
+    l "Like what?"
+    pl "A board game or something like that."
+    l "Sure."
+    nar "You and Lucien walk upstairs and look under his bed."
+    l "I have cluedu, munopolee, or junga."
+    menu:
+        "Which game do you choose?"
+
+        "Cluedu":
+            pl "I choose Cluedu"
+            l "Great Choice, my favourite."
+            nar "Lucien grabs the game and you head downstairs."
+            nar "He sets up the game and puts it out onto the table."
+            l "Oh shucks,"
+            pl "What?"
+            l "We need three people to play."
+            pl "Dang it."
+            l "We could ask my sister-"
+            l "But she wouldn't want to play."
+            pl "No, lets try."
+            l "Ok, shes not going to say yes if I ask, but if you ask she will."
+            l "Her room is next to mine. Good Luck"
+            nar "Lucien follows you upstairs and hides behind corner. He makes a thumbs up towards you."
+            nar "You knock on the door."
+            nar "A teen girl opens the door."
+            h "Hello?"
+            pl "Hey, my name is [name], I'm the exchange student your hosting."
+            h "oh. what do you want?"
+            pl "I was wondering if you would like to play Cluedu with us since we don't have enough players?"
+            h "Umm."
+            h "Sure. This better be quick though."
+            nar "You and Luciens sister walk downstairs"
+            nar "Lucien is waiting downstairs."
+            nar "You all sit down."
+            l "Who wants to be dealer?"
+            nar "Nobody answers"
+            l "Sure, I will."
+
+
+
+        "Munopolee":
+
+        "Junga":
