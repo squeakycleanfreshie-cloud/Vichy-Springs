@@ -21,6 +21,7 @@ default icecream = "vanilla"
 default run = False
 default swim = False
 default karma = 0
+default game = False
 
 label start:
     # TODO: ADD BACKGROUND — bedroom
@@ -503,9 +504,78 @@ label night_time
             l "Who wants to be dealer?"
             nar "Nobody answers"
             l "Sure, I will."
+            nar "Lucien deals everyone some card and a sheet."
+            nar "You play the game collecting evidence."
+            l "I have the murderer! I know who did it."
+            nar "Its not his turn yet, so you have a chance to guess the murderer before him."
+            nar "You worry, you are pretty close, but can't quite pin the nail on the head."
+            menu:
+                "Do you take a chance and guess?"
+
+                "Take a chance":
+                    l "I guess Mr.Lonchan in the Basement, with the Cheese wheel."
+                    nar "You open the answer pouch and look inside."
+                    l "I got it correct!"
+                    h "Oh no. I gotta go back to my room now."
+                    l "Please don't go- One more round?"
+                    nar "She is about to answer when you hear a knocking on the door."
+                    nar "Harriet looks up at lucien"
+                    h "Saved by mum"
+                    nar "She runs up to her room."
+                    nar "You and lucien go to the door to let her in."
+                    mu "Hey boys! How was school."
+                    l "Good."
+                    mu "Good to hear!"
+                    mu "I'm going to make dinner."
+                    l "ok"
+                    nar "You and Lucien walk back to the game and pack it up."
+                    jump after_game
+
+                "Let lucien win":
+                    $ game = True
+                    nar "You roll the dice, and pick a clue card up"
+                    nar "It reads:"
+                    nar "{i}Verrain opens up when you reveal your deepest secret{i}"
+                    pl "Hmm Thats odd."
+                    l "What is it?"
+                    pl "The card just says something ive never seen before."
+                    l "What does it say?"
+                    pl "Verra-, Verrain opens up when you reveal..."
+                    pl "Your deepest secret?"
+                    l "Thats really weird."
+                    l "Was it you, Harriet?"
+                    h "Nope."
+                    l "Hmm. Must just be apart of the game."
+                    pl "That means that you have to answer it."
+                    l "What! No."
+                    pl "Come on, its the rules."
+                    h "Yeah Lucien"
+                    nar "Harriet says this in a mocking voice"
+                    l "Fine."
+                    l "I genuinely think I'm a bad friend sometimes. But I don't know why."
+                    nar "Nobody Answers."
+                    l "Forget I said anything."
+                    h "Thats your secret. Thats it?"
+                    l "What did you want to hear Harriet?"
+                    nar "He laughs it off."
+                    nar "A knock sounds at the door."
+                    l "Can you get it Harriet. Please."
+                    h "Fine."
+                    nar "Lucien looks like he is about to cry as he packs up the game."
+                    nar "He runs up to his room."
+                    pl "Lucien Wait -"
+                    nar "He ignores you."
+                    mu "All ok [name]"
+                    nar "Luciens mum notices you sitting alone."
+                    pl "Yeah. Whats for dinner?"
+                    mu "Onion Soup and Soufles."
+                    pl "Delicous."
 
 
 
         "Munopolee":
 
         "Junga":
+
+
+label after_game:
