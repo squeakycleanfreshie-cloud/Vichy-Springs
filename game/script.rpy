@@ -12,6 +12,13 @@ define ta = Character("Ms Dubois")
 define ajp = Character("Arthur, Jaques & Paul")
 define h = Character("Harriet")
 
+
+image bg home = "#F2D4A7"
+image bg street = "#A8BFA8"
+image bg school = "#C4B89A"
+image bg forest = "#6B8F5E"
+image bg springs = "#5FBFB0"
+
 transform far_left:
     xalign 0.0
     yalign 1.0
@@ -54,12 +61,11 @@ default karma = 0
 default game = False
 
 label start:
-    # TODO: ADD BACKGROUND — bedroom
+    scene bg home
     nar "You wake up. Lips dry, confused about where you are."
     nar "You suddenly remember — you're in your new exchange family's house."
     nar "You get out of bed and get ready to walk downstairs."
     nar "You walk down the stairs, and catch a glimpse of your exchange family's mum."
-    # TODO: ADD BACKGROUND — living room
     show josette at center_mid
     mu "How did you sleep, darling!"
     pl "Okay... I woke up a couple of times."
@@ -85,7 +91,7 @@ label start:
     l "Also, we have to leave for school in 10 minutes, so finish your pancakes!"
     nar "You finish your pancakes and pack your bag, meeting Lucien at the door."
     l "Took you long enough! We are late, let's go!"
-    # TODO: ADD BACKGROUND — street
+    scene bg street
     hide josette
     nar "You and Lucien walk to school."
     l "Why did you choose to exchange to France?"
@@ -101,11 +107,10 @@ label start:
     l "My grandfather used to talk about it. Said his father used to take the family there before the war. I went looking, and... it's still there."
     pl "Cool."
     nar "You and Lucien finish walking to school."
-    # TODO: ADD BACKGROUND — school exterior
+    scene bg school
     hide lucien
     nar "Eventually, you arrive at school. You and Lucien have been split up because you're in separate classes, so you are all alone."
     nar "The teacher walks into the class."
-    # TODO: ADD BACKGROUND — classroom
     show mrpernette at center_mid
     t "Hello class, sorry I'm late."
     t "We have a new exchange student today. Their name is [name]. They will be in this History class until the end of the year."
@@ -218,7 +223,7 @@ label label_two:
             jump morning_tea
 
 label morning_tea:
-    # TODO: ADD BACKGROUND — school quad
+    scene bg school
     show lucien at left_mid
     nar "You and Lucien walk to the outdoor playground."
     l "This is the Quad. Everyone plays soccer, handball, and basketball here."
@@ -270,7 +275,6 @@ label morning_tea_1:
     hide jaques
     hide paul
     hide lucien
-    # TODO: ADD BACKGROUND — school exterior, afternoon
     nar "The day and classes pass, and before you know it, it's the end of school."
     nar "You go meet Lucien and his friends outside the front of the school."
     show lucien at far_left
@@ -282,7 +286,7 @@ label morning_tea_1:
     l "Hey, [name]!"
     l "Ready to leave?"
     pl "Yeah."
-    # TODO: ADD BACKGROUND — streets of Vichy
+    scene bg street
     nar "You and the boys take the walk through the beautiful streets of Vichy."
     nar "You enjoy looking at the architecture."
     pl "So how long have all of you known each other?"
@@ -313,7 +317,7 @@ label morning_tea_1:
             jump vichy_springs_approach
 
 label vichy_springs_approach:
-    # TODO: ADD BACKGROUND — bushy dead end / forest edge
+    scene bg forest
     nar "You arrive at a bushy dead end."
     a "What's this, Lucien?"
     j "Yeah, where are we?"
@@ -323,7 +327,6 @@ label vichy_springs_approach:
     ajp "Okay."
     nar "Everyone looks a bit grumpy."
     l "Okay, let's go!"
-    # TODO: ADD BACKGROUND — dense bush / pushing through trees
     nar "You and the group trudge through the thick bush."
     nar "Lucien is at the front, holding back branches for everyone."
     nar "He accidentally lets go of one and it hits Paul in the face."
@@ -333,7 +336,7 @@ label vichy_springs_approach:
     p "Okay."
     nar "You and the group continue walking."
     nar "Suddenly, you hear the group gasp."
-    # TODO: ADD BACKGROUND — Vichy Springs reveal
+    scene bg springs
     hide arthur
     hide jaques
     hide paul
@@ -425,7 +428,7 @@ label vichy_springs_swim_1:
             jump vichy_springs_swim_2
 
 label vichy_springs_swim_2:
-    # TODO: ADD BACKGROUND — in the water, golden afternoon light, steam rising
+    scene bg springs
     hide arthur
     hide jaques
     hide paul
@@ -455,7 +458,7 @@ label vichy_springs_swim_2:
     jump walk_home_from_swim
 
 label walk_home_from_swim:
-    # TODO: ADD BACKGROUND — streets of Vichy, evening
+    scene bg street
     show lucien at left_mid
     show arthur at far_left
     show paul at center_mid
@@ -488,7 +491,7 @@ label walk_home_from_swim:
             jump walk_home_after_lucien_question
 
 label walk_home_after_lucien_question:
-    # TODO: ADD BACKGROUND — home exterior
+    scene bg home
     nar "You arrive at Lucien's home."
     nar "You go to knock on the door, but Lucien just unlocks it with his key."
     l "Home, Sweet Home."
@@ -532,7 +535,7 @@ label walk_home_after_lucien_question:
             jump night_time
 
 label night_time:
-    # TODO: ADD BACKGROUND — living room, night
+    scene bg home
     l "Your turn for the shower. It's down the stairs and to the left of the kitchen."
     pl "Ok."
     hide lucien
@@ -814,7 +817,7 @@ label night_time:
             jump after_game
 
 label after_game:
-    # TODO: ADD BACKGROUND — dining room / kitchen, evening
+    scene bg home
     hide lucien
     show josette at center_mid
     mu "Dinner time!"
