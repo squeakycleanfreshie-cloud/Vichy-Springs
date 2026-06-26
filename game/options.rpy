@@ -18,6 +18,8 @@ define gui.text_font = "PixelifySans-VariableFont_wght.ttf"
 define gui.name_text_font = "PixelifySans-VariableFont_wght.ttf"
 define gui.interface_text_font = "PixelifySans-VariableFont_wght.ttf"
 define gui.button_text_font = "PixelifySans-VariableFont_wght.ttf"
+define gui.label_text_font = "PixelifySans-VariableFont_wght.ttf"
+define gui.slider_label_text_font = "PixelifySans-VariableFont_wght.ttf"
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
