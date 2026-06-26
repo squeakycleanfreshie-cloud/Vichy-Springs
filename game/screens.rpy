@@ -352,10 +352,12 @@ style navigation_button_text:
 
 screen main_menu():
 
+
+
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    add gui.main_menu_background size (1971.2, 1080) #add this to the end adjust to the system gui
 
     ## This empty frame darkens the main menu.
     frame:
