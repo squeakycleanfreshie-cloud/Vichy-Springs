@@ -1,6 +1,12 @@
 # Vichy Springs
 Vichy springs is a renpy visual novel where you are an echange student with a boy called Lucien. You meet his freinds and hang out after school together. One day after school you go to the forgotten, Vichy Springs, and stumble apon a secret nobody has ever found.
 
+# Features
+This game features:
+- Multiple Choices
+- Character + Personality Variables
+- Multiple Choices
+
 ## How To Play
 Use the itch.io link here:
 
