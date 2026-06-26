@@ -7,5 +7,5 @@ Use the itch.io link here:
 ## Art & Graphics
 All pixel art was made by me in Aseprite. P.S reveiwers I forgot to put that time on lapse.
 
-## Time
+## playtime
 Right now this game takes around 10 Mins, more days and chapters coming soon!
