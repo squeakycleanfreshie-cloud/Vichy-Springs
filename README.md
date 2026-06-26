@@ -25,3 +25,6 @@ In the near future, I plan to add:
 - Multiple Endings
 - Multiple Days
 - Custom Background Pixel Art
+
+## Notes
+The two teachers don't have sprites yet
