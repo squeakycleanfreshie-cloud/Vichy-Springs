@@ -811,4 +811,5 @@ label after_game:
     nar "When shes done serving, everybody starts eating."
     nar "You finish your food."
     pl "That was the best food ive ever had in my life Josette!"
-    mu "Made with love"
+    mu "Made with love!"
+    nar "You and "

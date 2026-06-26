@@ -12,7 +12,12 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
+
 define config.name = _("Vichy Springs")
+define gui.text_font = "PixelifySans-VariableFont_wght.ttf"
+define gui.name_text_font = "PixelifySans-VariableFont_wght.ttf"
+define gui.interface_text_font = "PixelifySans-VariableFont_wght.ttf"
+define gui.button_text_font = "PixelifySans-VariableFont_wght.ttf"
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -183,6 +188,9 @@ init python:
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
+
+
+
 
     ## To archive files, classify them as 'archive'.
 
