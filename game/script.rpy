@@ -700,12 +700,64 @@ label night_time:
                     nar "In the end, you have most of the properties and sets."
                     l "I guess you win."
                     pl "Yeah."
+                    nar "You hear a knock on the door."
+                    l "Mums home."
+                    nar "You and Lucien go to the door to let her in."
+                    show josette at center
+                    mu "Hey boys! How was school?"
+                    show lucien at left
+                    l "Good."
+                    mu "Good to hear!"
+                    mu "I'm going to make dinner."
+                    l "Ok."
+                    hide josette
+                    nar "You and Lucien walk back to the game and pack it up."
+                    pl "That was fun."
+                    l "Yeah."
+                    l "Want to watch TV?"
+                    pl "Sure. Whatever you want."
+                    nar "You and Lucien sit down on the couch and he turns on the TV."
+                    nar "He puts on a nature documentary and you wait until dinner time."
                     jump after_game
 
                 "Save your money.":
+                    l "Haha! Why are you not buying any properties?"
+                    pl "I read a book that it was the best strategy."
+                    l "Well it obviously isn't! Im beating you"
+                    l "Lucien looks happy and smiling."
+                    nar "You and lucien play for hours until the game finishes."
+                    l "I won!"
+                    pl "Says the guy who didn't like monopoly."
+                    l "I guess times change. Besides, I haven't played it in a while."
+                    nar "You hear a knock on the door."
+                    l "Mums home."
+                    nar "You and Lucien go to the door to let her in."
+                    show josette at center
+                    mu "Hey boys! How was school?"
+                    show lucien at left
+                    l "Good."
+                    mu "Good to hear!"
+                    mu "I'm going to make dinner."
+                    l "Ok."
+                    hide josette
+                    nar "You and Lucien walk back to the game and pack it up."
+                    pl "That was fun."
+                    l "Yeah."
+                    l "Want to watch TV?"
+                    pl "Sure. Whatever you want."
+                    nar "You and Lucien sit down on the couch and he turns on the TV."
+                    nar "He puts on a nature documentary and you wait until dinner time."
                     jump after_game
 
         "Jenga":
+            pl "Jenga."
+            l "Nice and Quick."
+            pl "Yeah. I used to play this with my-"
+            nar "A sad memory flies into your head."
+            pl "Nevermind"
+            nar "Lucien looks confused but brushes it off."
+            nar "You and "
+
             jump after_game
 
 label after_game:
