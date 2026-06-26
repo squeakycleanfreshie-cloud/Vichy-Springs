@@ -28,3 +28,6 @@ In the near future, I plan to add:
 
 ## Notes
 The two teachers don't have sprites yet, and there is no background images, and I promise im going to submit thoose soon, I PROMISE. Im just trying to RSVP for Crux. And i had a lil problem with lossy saving so they look a bit odd too.
+
+## AI Declaration
+I used ai to create inital ideas of what the pixel art would look like, then based that off aseprite.
