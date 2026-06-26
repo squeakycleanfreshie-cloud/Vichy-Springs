@@ -12,7 +12,7 @@ This game features:
 I wanted to learn a new programming languadge, and make a cool story game AND make really cool pixel art i'm proud of
 
 ## How To Play
-Use the itch.io link here:
+Use the itch.io link here: https://remymorea.itch.io/vichy-springs
 
 ## Art & Graphics
 All pixel art was made by me in Aseprite. P.S reveiwers I forgot to put that time on lapse.
