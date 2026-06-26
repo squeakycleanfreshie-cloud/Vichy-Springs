@@ -35,7 +35,7 @@ transform far_right:
 image lucien = im.FactorScale("lucien.png", 2)
 image arthur = im.FactorScale("arthur.png", 2)
 image paul = im.FactorScale("paul.png", 2)
-image jaques = "jaques.png"
+image jaques = im.FactorScale("jaques.png", 2)
 image josette = im.FactorScale("josette.png", 2)
 image harriet = "harriet.png"
 image mrpernette = "mrpernette.png"
