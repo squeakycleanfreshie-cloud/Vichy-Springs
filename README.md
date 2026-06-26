@@ -8,6 +8,9 @@ This game features:
 - Custom Pixel Art
 - Custom Menu Colours and Fonts
 
+# Motivation
+I wanted to learn a new programming languadge, and make a cool story game AND make really cool pixel art i'm proud of
+
 ## How To Play
 Use the itch.io link here:
 
