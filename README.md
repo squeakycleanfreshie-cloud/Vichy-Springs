@@ -6,6 +6,8 @@ This game features:
 - Multiple Choices
 - Character + Personality Variables
 - Multiple Choices
+- Custom Pixel Art
+- Custom Menu Colours and Fonts
 
 ## How To Play
 Use the itch.io link here:
