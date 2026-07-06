@@ -11,6 +11,7 @@ define t = Character("Mr Pernette")
 define ta = Character("Ms Dubois")
 define ajp = Character("Arthur, Jaques & Paul")
 define h = Character("Harriet")
+define d = Character("Day")
 
 
 image bg home = "#F2D4A7"
@@ -59,6 +60,7 @@ default run = False
 default swim = False
 default karma = 0
 default game = False
+default comp = False
 
 label start:
     scene bg home
@@ -854,10 +856,82 @@ label after_game:
     nar "Suddenly, you spot a glimpse of someone walking down the street in a satin gown. Their presence is eerie."
     nar "They are just walking in the middle of the road, face hidden by the gown."
     nar "All of a sudden they look up at you in the eyes."
-    pl "What the flip?"
+    pl "Wha.."
     nar "You dodge down below the window out of fear"
     nar "After a minuite, you look back up to see if they are still there"
     nar "they are gone, like they where never there."
-    pl "How odd. I must need to go to sleep."
-    pl "Even though your heart is pumping from fear,"
-    pl "You jump into your bed, and drift to sleep."
+    pl "I must need to go to sleep."
+    nar "Even though your heart is pumping from fear,"
+    nar "You jump into your bed, and drift to sleep."
+    d "{i}Day 2{i}"
+    nar "Knock..Knock...Knock"
+    if run == True and lucien >= 1:
+        l "Wake up [name]! We are going on a run!"
+        pl "Ughhh Ok."
+        nar "You quickly get changed into some clothes"
+        pl "Why didn't you tell me?"
+        l "I forgot, anyway you will thank me later."
+        pl "You are too tired to respond"
+        nar "You and lucien walk downstairs"
+        nar "He quickly begins running."
+        pl "No warm up?"
+        l "Your a real fun sponge."
+        pl "Nevermind."
+        nar "You and him begin to run"
+        nar "You notice that after running for a while in the streets of vichy, your paces and steps syncronise"
+        pl "Where are we going?"
+        l "For a run"
+        nar "He says this in a mocking tone"
+        pl "Obviously. Where are you taking me?"
+        l "Not to sound like a therapist or anything, but the journey matters more than the result."
+        pl "Wise.."
+        nar "You notice how good lucien is at running. You are going at quite a fast, and his breath barley breathes."
+        menu:
+            "Do you compliment Lucien?"
+
+            "Compliment Him":
+                $ lucien += 1
+                $ comp = True
+                pl "Your really good at running."
+                l "Thanks."
+                pl "Do you do any competitions, like cross country?"
+                l "Whats cross country?"
+                pl "Like a running competition."
+                l "Oh no. Nobody nearby runs anything like that, besides i'm not even good enough."
+                pl "Yes you are! Your bearley-"
+                nar "You struggle a bit to talk and run"
+                pl "-struggling, and we are going at quite a good pace"
+                pl "You need to find a competition, and win!"
+                l "Maybe that could be my goal."
+                pl "Yeah. Maybe I could do it too...and come last"
+                nar "Lucien bursts out laughing"
+                pl "Hey!"
+                l "Sorry, Sorry you wouldn't come last"
+                pl "Good."
+                jump after_run_q
+
+
+            "Keep running quietly":
+                jump after_run_q
+
+
+    
+    else:
+        jump after_night_1
+
+label after_run_q:
+    nar "You and lucien continue running, through the streets of vichy"
+    nar "Eventually, they open to a beautiful coastline, showered by pink sunrise"
+    pl "Vichy is on the Coast!?"
+    l "Yeah, you didn't know?"
+    pl "I came by car, and we never drove past it."
+    l "How did you not know though?"
+    pl "I just told you."
+    nar "You continue running, and he"
+    
+label after_night_1:
+nar "Someone opens the door and slams into your room"
+l "[name], Get Up, You are late for school!"
+nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
+    
+    
