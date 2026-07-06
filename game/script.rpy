@@ -947,9 +947,80 @@ label after_night_1:
         jump d1
 
 label d1:
-nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
-nar "You and lucien quickly run to school."
-    
+    nar "You keep on running, until you spot Paul walking to school"
+    pl "Lets walk with him."
+    l "No. Otherwise we will be late."
+    pl "We could at least ask him to run with us"
+    l "Don't tell him I told you this, but he isn't the fittest."
+    menu:
+        "Do you laugh along with him?"
+
+        "Laugh along with the joke":
+            $ karma -= 100
+            pl "Haha. Then lets at least say hello"
+            l "Fine"
+            nar "You and lucien run past Paul, and wave at him as you pass."
+            pl "Hey paul! Want to run with us?"
+            p "Sure!"
+            nar "His face lights up."
+            nar "Lucien looks at you sternly and whispers to you"
+            l "Why did you actually invite him?"
+            menu:
+                "Do you finally tell him to stop being mean?"
+
+                "Tell him to stop being a bully":
+                    $ karma += 100
+                    pl "Stop."
+                    pl "I'm over it. Your so mean to Paul, and he didn't even do anything. And I don't know if you mean it, but it happens constantly!"
+                    nar "Paul heard that."
+                    nar "He looks at you. He is embarresed, but slightly shocked."
+                    nar "You look back up at Lucien. He is silent. He could be angry."
+
+                "Watch silently as paul keeps taking hits":
+                    $ paul -= 1
+                    l "You can come paul, but I don't think you would be able to keep up."
+                    p "I'll come."
+                    nar "Lucien sighs, annoyed."
+                    nar "You, Paul and lucien start to run again."
+                    l "Oh my god, we are so late for school it started 20 minutes ago."
+                    l "We are going to have to run faster."
+                    nar "So you do run faster. You pick up the pace."
+                    pl "Wha-"
+                    nar "Paul is running really fast. Like really fast. He is a way better runner than lucien."
+                    pl "What were you talking about Lucien? Paul is a great runner?"
+                    l "My bad"
+
+            
+
+        "Tell him it is mean":
+            $ karma += 100
+            $ paul += 1
+            lucien -= 1
+            nar "You and lucien run past Paul, and wave at him as you pass."
+            pl "Hey paul! Want to run with us?"
+            p "Sure!"
+            nar "His face lights up."
+            nar "Lucien looks at you sternly and whispers to you"
+            l "Why did you actually invite him?"
+            pl "What he gonna make a differnce?"
+            l "I don't know...Hes just..Annoying."
+            pl "How can he be annoying, if hes shy?"
+            pl "I think YOU are being annoying. Nobody cares what paul thinks."
+            pl "I want YOU to say sorry to paul, for all this trouble you have put him through, and I don't even know how long it has been going on for."
+            l "Your not my dad."
+            menu:
+                "Do you say a really mean roast?"
+
+                "Say it.":
+                    $ lucien -= 2
+                    pl "Well maybe you need a new one because I havn't even seen him once."
+                    nar "Lucien bursts out crying and runs away."
+                    nar "You feel really bad."
+
+
+                "Agree with him.":
+
+
 label after_run:
     nar "You open the door"
     l "Shhh!"
@@ -963,3 +1034,4 @@ label after_run:
     nar "Tired because of how early it is, you hop back into bed to rest your eyes....but slowly you drift to sleep."
     jump after_night_1
     
+label after_run_to_school:
