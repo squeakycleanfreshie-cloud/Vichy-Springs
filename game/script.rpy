@@ -63,6 +63,7 @@ default game = False
 default comp = False
 
 label start:
+    play music "music.mp3"
     scene bg home
     nar "You wake up. Lips dry, confused about where you are."
     nar "You suddenly remember — you're in your new exchange family's house."
@@ -927,11 +928,38 @@ label after_run_q:
     pl "I came by car, and we never drove past it."
     l "How did you not know though?"
     pl "I just told you."
-    nar "You continue running, and he"
+    nar "You continue running, and you eventually loop back home"
+    jump after_run
     
 label after_night_1:
-nar "Someone opens the door and slams into your room"
-l "[name], Get Up, You are late for school!"
+    nar "Someone opens the door and slams into your room"
+    l "[name], Get Up, You are late for school!"
+    if run == True:
+        pl "I must have fallen back asleep."
+        nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
+        nar "You and lucien quickly run to school."
+        l "Another run, hey!"
+        nar "You and lucien laugh"
+        jump d1
+    else:
+        nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
+        nar "You and lucien quickly run to school."
+        jump d1
+
+label d1:
 nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
+nar "You and lucien quickly run to school."
     
+label after_run:
+    nar "You open the door"
+    l "Shhh!"
+    pl "What?"
+    l "Shhh! Be quite"
+    pl "Why?"
+    l "I maybe...didn't tell mum about our..run. So maybe we just, don't tell her. Besides, my whole family are late risers."
+    pl "Okay. Why didn't you just tell her?"
+    l "Because then she would have said no."
+    nar "You and lucien sneak into your rooms"
+    nar "Tired because of how early it is, you hop back into bed to rest your eyes....but slowly you drift to sleep."
+    jump after_night_1
     
