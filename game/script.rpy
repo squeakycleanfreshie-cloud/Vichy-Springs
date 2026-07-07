@@ -23,32 +23,65 @@ image bg springs = "#5FBFB0"
 transform far_left:
     xalign 0.0
     yalign 1.0
+    zoom 2.0
 
 transform left_mid:
     xalign 0.25
     yalign 1.0
+    zoom 2.0
 
 transform center_mid:
     xalign 0.50
     yalign 1.0
+    zoom 2.0
 
 transform right_mid:
     xalign 0.75
     yalign 1.0
+    zoom 2.0
 
 transform far_right:
     xalign 0.9
     yalign 1.0
+    zoom 2.0
 
-image lucien = im.FactorScale("images/lucien.png", 2)
-image arthur = im.FactorScale("images/arthur.png", 2)
-image paul = im.FactorScale("images/paul.png", 2)
-image jaques = im.FactorScale("images/jaques.png", 2)
-image josette = im.FactorScale("images/josette.png", 2)
-image harriet = im.FactorScale("images/harriet.png", 2)
-image mrpernette = "images/mrpernette.png"
-image msdubois = "images/msdubois.png"
-image verrain = "images/verrain.png"
+
+transform normal_size:
+    ease 0.15 zoom 2.0
+
+transform talking_size:
+    ease 0.15 zoom 2.16
+
+init python:
+    _last_speaker_tag = None
+
+    def make_speaker_zoom(tag):
+        def callback(event, **kwargs):
+            global _last_speaker_tag
+
+            if event != "show_done":
+                return
+
+            if _last_speaker_tag and _last_speaker_tag != tag and renpy.showing(_last_speaker_tag):
+                renpy.show(_last_speaker_tag, at_list=[normal_size])
+
+            if renpy.showing(tag):
+                renpy.show(tag, at_list=[talking_size])
+
+            _last_speaker_tag = tag
+
+        return callback
+
+define mu = Character("Josette", callback=make_speaker_zoom("josette"))
+define l = Character("Lucien", callback=make_speaker_zoom("lucien"))
+define a = Character("Arthur", callback=make_speaker_zoom("arthur"))
+define j = Character("Jaques", callback=make_speaker_zoom("jaques"))
+define p = Character("Paul", callback=make_speaker_zoom("paul"))
+define v = Character("Verrain", callback=make_speaker_zoom("verrain"))
+define b = Character("Budak", callback=make_speaker_zoom("budak"))
+define t = Character("Mr Pernette", callback=make_speaker_zoom("mrpernette"))
+define ta = Character("Ms Dubois", callback=make_speaker_zoom("msdubois"))
+define h = Character("Harriet", callback=make_speaker_zoom("harriet"))
 
 default paul = 0
 default lucien = 0
@@ -95,7 +128,7 @@ label start:
     nar "You finish your pancakes and pack your bag, meeting Lucien at the door."
     l "Took you long enough! We are late, let's go!"
     scene bg street
-    hide josette
+    show lucien at left_mid
     nar "You and Lucien walk to school."
     l "Why did you choose to exchange to France?"
     pl "I wanted to get away from my family for a year."
@@ -290,6 +323,10 @@ label morning_tea_1:
     l "Ready to leave?"
     pl "Yeah."
     scene bg street
+    show lucien at far_left
+    show arthur at left_mid
+    show paul at center_mid
+    show jaques at right_mid
     nar "You and the boys take the walk through the beautiful streets of Vichy."
     nar "You enjoy looking at the architecture."
     pl "So how long have all of you known each other?"
@@ -321,6 +358,10 @@ label morning_tea_1:
 
 label vichy_springs_approach:
     scene bg forest
+    show lucien at far_left
+    show arthur at left_mid
+    show paul at center_mid
+    show jaques at right_mid
     nar "You arrive at a bushy dead end."
     a "What's this, Lucien?"
     j "Yeah, where are we?"
@@ -496,6 +537,7 @@ label walk_home_from_swim:
 
 label walk_home_after_lucien_question:
     scene bg home
+    show lucien at center_mid
     nar "You arrive at Lucien's home."
     nar "You go to knock on the door, but Lucien just unlocks it with his key."
     l "Home, Sweet Home."
@@ -540,6 +582,7 @@ label walk_home_after_lucien_question:
 
 label night_time:
     scene bg home
+    show lucien at center_mid
     l "Your turn for the shower. It's down the stairs and to the left of the kitchen."
     pl "Ok."
     hide lucien
@@ -822,10 +865,10 @@ label night_time:
 
 label after_game:
     scene bg home
-    hide lucien
-    show josette at center_mid
-    mu "Dinner time!"
     show lucien at left_mid
+    show josette at center_mid
+    show harriet at right_mid
+    mu "Dinner time!"
     nar "You and Lucien run to the dinner table, hungry from the big day you have just had."
     nar "Josette puts a dish of steaming soup on the table, and a plate of little ramekins filled with soufflé."
     nar "Lucien whispers in your ear."
@@ -846,6 +889,9 @@ label after_game:
     mu "Are you guys ready to go to bed?"
     l "Yes"
     pl "Yeah."
+    hide josette
+    hide lucien
+    scene bg home
     nar "You get ready to go to bed, clean your teeth. You are really tired."
     nar "You check your watch 10:00PM. Wow, time flies really fast in Vichy."
     nar "You sit in your room and look out the window, reflecting on the day you have had."
@@ -868,6 +914,7 @@ label after_game:
     d "{i}Day 2{i}"
     nar "Knock..Knock...Knock"
     if run == True and lucien >= 1:
+        show lucien at center_mid
         l "Wake up [name]! We are going on a run!"
         pl "Ughhh Ok."
         nar "You quickly get changed into some clothes"
@@ -912,16 +959,16 @@ label after_game:
                 pl "Good."
                 jump after_run_q
 
-
             "Keep running quietly":
                 jump after_run_q
 
-
-    
     else:
+        hide lucien
         jump after_night_1
 
 label after_run_q:
+    scene bg street
+    show lucien at center_mid
     nar "You and lucien continue running, through the streets of vichy"
     nar "Eventually, they open to a beautiful coastline, showered by pink sunrise"
     pl "Vichy is on the Coast!?"
@@ -931,8 +978,10 @@ label after_run_q:
     pl "I just told you."
     nar "You continue running, and you eventually loop back home"
     jump after_run
-    
+
 label after_night_1:
+    scene bg home
+    show lucien at center_mid
     nar "Someone opens the door and slams into your room"
     l "[name], Get Up, You are late for school!"
     if run == True:
@@ -948,7 +997,10 @@ label after_night_1:
         jump d1
 
 label d1:
+    scene bg street
+    show lucien at left_mid
     nar "You keep on running, until you spot Paul walking to school"
+    show paul at center_mid
     pl "Lets walk with him."
     l "No. Otherwise we will be late."
     pl "We could at least ask him to run with us"
@@ -976,6 +1028,12 @@ label d1:
                     nar "Paul heard that."
                     nar "He looks at you. He is embarresed, but slightly shocked."
                     nar "You look back up at Lucien. He is silent. He could be angry."
+                    l "Stop What?"
+                    pl "Being a bully."
+                    l "I'm not. But ok."
+                    pl "Good."
+                    nar "You and paul go on a run"
+                    jump after_run_to_school
 
                 "Watch silently as paul keeps taking hits":
                     $ paul -= 1
@@ -990,9 +1048,11 @@ label d1:
                     nar "Paul is running really fast. Like really fast. He is a way better runner than lucien."
                     pl "What were you talking about Lucien? Paul is a great runner?"
                     l "My bad"
+                    nar "You, paul and Lucien run to school and arrive just on time."
+                    jump after_run_to_school
 
-            
-
+        
+        
         "Tell him it is mean":
             $ karma += 100
             $ paul += 1
@@ -1029,13 +1089,26 @@ label d1:
                     pl "Well lets head off. Can we walk. I'm tired."
                     p "Yeah"
                     p "I don't mind being late."
-                    nar "You and Paul walk to school, and continue the day happily."
+                    nar "You and Paul walk to school, and arrive late"
+                    jump after_run_to_school
 
                 "Agree with him.":
-                    p "Hi"
-
+                    p "I'm sorry. I'm just really tired."
+                    nar "Lucien sighs, annoyed."
+                    nar "You, Paul and lucien start to run again."
+                    l "Oh my god, we are so late for school it started 20 minutes ago."
+                    l "We are going to have to run faster."
+                    nar "So you do run faster. You pick up the pace."
+                    pl "Wha-"
+                    nar "Paul is running really fast. Like really fast. He is a way better runner than lucien."
+                    pl "What were you talking about Lucien? Paul is a great runner?"
+                    l "My bad"
+                    nar "You, paul and Lucien run to school and arrive just on time."
+                    jump after_run_to_school
 
 label after_run:
+    scene bg home
+    show lucien at center_mid
     nar "You open the door"
     l "Shhh!"
     pl "What?"
@@ -1046,9 +1119,8 @@ label after_run:
     l "Because then she would have said no."
     nar "You and lucien sneak into your rooms"
     nar "Tired because of how early it is, you hop back into bed to rest your eyes....but slowly you drift to sleep."
+    hide lucien
     jump after_night_1
-    
+
 label after_run_to_school:
-    $ achievement.grant("enter_le_repli")
-    $ achievement.grant("lost_paul")
-    $ achievement.grant("lucien_friend")
+    return

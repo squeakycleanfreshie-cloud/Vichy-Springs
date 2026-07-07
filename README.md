@@ -5,8 +5,9 @@ Vichy springs is a renpy visual novel where you are an echange student with a bo
 This game features:
 - Multiple Choices
 - Character + Personality Variables
-- Custom Pixel Art
+- Custom Pixel Art Characters
 - Custom Menu Colours and Fonts
+- Custom Achivments
 
 ## Motivation
 I wanted to learn a new programming languadge, and make a cool story game AND make really cool pixel art i'm proud of
@@ -27,7 +28,8 @@ In the near future, I plan to add:
 - Custom Background Pixel Art
 
 ## Notes
-The two teachers don't have sprites yet, and there is no background images, and I promise im going to submit thoose soon, I PROMISE. Im just trying to RSVP for Crux. And i had a lil problem with lossy saving so they look a bit odd too.
+The two teachers don't have sprites yet, and there is no background images, and I promise im going to submit thoose soon, I PROMISE. Im just trying to RSVP for Crux. And i had a lil problem with lossy saving so they look a bit odd too. This is submission 2, adding more story content and achivements
 
 ## AI Declaration
 I used ai to create inital ideas of what the pixel art would look like, then based that off aseprite.
+
