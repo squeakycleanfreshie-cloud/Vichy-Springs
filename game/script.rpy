@@ -339,6 +339,7 @@ label vichy_springs_approach:
     p "Okay."
     nar "You and the group continue walking."
     nar "Suddenly, you hear the group gasp."
+    $ achievement.grant("found_vichy_springs")
     scene bg springs
     hide arthur
     hide jaques
@@ -995,7 +996,7 @@ label d1:
         "Tell him it is mean":
             $ karma += 100
             $ paul += 1
-            lucien -= 1
+            $ lucien -= 1
             nar "You and lucien run past Paul, and wave at him as you pass."
             pl "Hey paul! Want to run with us?"
             p "Sure!"
@@ -1016,9 +1017,22 @@ label d1:
                     pl "Well maybe you need a new one because I havn't even seen him once."
                     nar "Lucien bursts out crying and runs away."
                     nar "You feel really bad."
-
+                    pl "Are you okay paul?"
+                    p "Yeah, i'm fine. Thank you for saying something. Nobody has ever really noticed."
+                    p "But I don't think he means it."
+                    pl "How?"
+                    p "I kind of got the hint a lot of things are going on at home for him."
+                    pl "Oh. Yeah"
+                    pl "Do you think he will forgive me?"
+                    p "Yeah. The thing about Lucien is he dosne't care if you do something wrong. He will just move on and forget. Give or take till the end of the day."
+                    nar "You have never seen Paul be this open and talk this much."
+                    pl "Well lets head off. Can we walk. I'm tired."
+                    p "Yeah"
+                    p "I don't mind being late."
+                    nar "You and Paul walk to school, and continue the day happily."
 
                 "Agree with him.":
+                    p "Hi"
 
 
 label after_run:
