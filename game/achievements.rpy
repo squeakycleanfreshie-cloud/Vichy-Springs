@@ -8,6 +8,8 @@ init python:
     achievement.register("popular", display_name="Popular", description="Become best freinds with everyone")
     achievement.register("saint", display_name="Saint", description="Be a really good person")
     achievement.register("clumsy", display_name="Clumsy", description="Knock over the tower in Jenga")
+    achievement.register("popular", display_name="Popular", description="Have all the freinds help you look for Lucien")
+    achievement.register("antisocial", display_name="Antisocial", description="I never liked you anyway! (loose the freindship with lucien)")
 
     my_achievement_ids = [
         "found_vichy_springs",
@@ -19,6 +21,7 @@ init python:
         "popular",
         "saint",
         "clumsy",
+        "popular",
     ]
 
     my_achievement_names = {
@@ -31,6 +34,7 @@ init python:
         "popular": "Popular",
         "saint": "Saint",
         "clumsy": "Clumsy",
+        "popular": "Popular",
     }
 
     my_achievement_descriptions = {
@@ -43,6 +47,7 @@ init python:
         "popular": "Become best freinds with everyone",
         "saint": "Be a really good person",
         "clumsy": "Knock over the tower in Jenga",
+        "popular": "Have all the freinds help you look for Lucien"
     }
 
 screen achievements_screen():

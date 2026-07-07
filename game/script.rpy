@@ -94,6 +94,7 @@ default swim = False
 default karma = 0
 default game = False
 default comp = False
+default fight = False
 
 label start:
     play music "music.mp3"
@@ -1081,6 +1082,7 @@ label d1:
 
                 "Say it.":
                     $ lucien -= 2
+                    $ fight = False
                     pl "Well maybe you need a new one because I havn't even seen him once."
                     nar "Luciens eyes water up."
                     nar "He looks behind him."
@@ -1181,5 +1183,44 @@ label after_run_to_school:
                 a "Lucien can come if he wants to. And he will want to come."
     else:
         pl "Hey guys!"
+        j "Hey [name]!"
+        if fight == True:
+            nar "Lucien looks up at you. He looks sad."
+            menu:
+                "Do you apologise?"
+
+                "Apologise":
+
+                "Be stubborn":
+                    $ achievement.grant("antisocial") 
+                    nar "You and the group eat lunch in silence."
+                    nar "Arthur remembers something and talks"
+                    a "Guys, I just remembered I got tickets to the rugby match!"
+                    j "Cool! Whos playing?"
+                    a "France v Australia"
+                    j "Where even is Australia?"
+                    a "How do you not know that?!"
+                    j "I don't pay attention in Geography.."
+                    a "But geography is like the best subject."
+                    j "Nooo Its so boring, espacially with Mr Casidy"
+                    a "I have never had him. Is he bad?"
+                    j "He SO bad! He forgets stuff all the time, always shows up 20 minutes late to class."
+                    nar "The group laugh."
+                    nar "The bell rings."
+                    a "Time to go. See you after school outside again."
+                    pl "So we are still going to the springs?"
+                    j "Yeah."
+                    a "Lucien your rather quite today. Are you okay?"
+                    l "Yes. I'm FINE."
+                    j "Calm down cranky."
+                    l "Go to class."
+                    nar "Athur, jaques and Paul walk away, shocked at Luciens antisocial behavior."
+                    l "So your not going to say sorry?"
+                    nar "You finally realise that if you don't apologise, Lucien is going to continue to be angry."
+                    
+        else:
+
+                
+
 
     return
