@@ -1082,7 +1082,13 @@ label d1:
                 "Say it.":
                     $ lucien -= 2
                     pl "Well maybe you need a new one because I havn't even seen him once."
-                    nar "Lucien bursts out crying and runs away."
+                    nar "Luciens eyes water up."
+                    nar "He looks behind him."
+                    l "How dare you!"
+                    pl "I'm sorry, I didn't mean it!"
+                    l "No! I'm leaving."
+                    nar "Lucien runs away from you and Paul"
+                    nar "You regret your choice."
                     nar "You feel really bad."
                     pl "Are you okay paul?"
                     p "Yeah, i'm fine. Thank you for saying something. Nobody has ever really noticed."
@@ -1133,7 +1139,7 @@ label after_run_to_school:
     nar "You arrive at school and continue the day as usual."
     nar "Geography and Math pass quickly, and the bell rings for recess."
     nar "You meet the group sitting at their usual spot."
-    if lucien =< -5:
+    if lucien <= -5:
         nar "You notice lucien isn't sitting here"
         pl "Wheres lucien?"
         j "I don't know. Havn't seen him all morning."
@@ -1143,37 +1149,37 @@ label after_run_to_school:
             "Look for him":
                 $ lucien += 1
                 pl "I'm gonna go look for him. Anyone wanna come?"
-                if paul and jaques and arthur => 2:
+                if paul >= 2 and jaques >= 2 and arthur >= 2:
                     p "I'll come!"
                     j "I come along too"
                     a "Sure."
-                elif paul and jaques => 2:
+                    $ achievement.grant("popular")
+                elif paul >= 2 and jaques >= 2:
                     p "I'll come!"
                     j "I come along too"
-                elif paul and arthur => 2:
+                elif paul >= 2 and arthur >= 2:
                     p "I'll come!"
-                    j "I come along too"
                     a "Sure."
-                elif jaques and arthur => 2:
+                elif jaques >= 2 and arthur >= 2:
                     j "Sure"
                     a "Don't forget me."
-                elif jauqes => 2:
-                    j "I'll come!"
-                elif arthur => 2:
-                    a "I can come with you."
-                if paul => 2:
+                elif paul >= 2:
                     p "I'll come!"
-                elif jauqes => 2:
+                elif jaques >= 2:
                     j "I'll come!"
-                elif arthur => 2:
+                elif arthur >= 2:
                     a "I can come with you."
                 else:
                     nar "nobody responds"
                     pl "I guess its just me"
 
             "Let him be by himself":
-                nar "Oh okay. Are we still going to the springs after school."
+                pl "Oh okay. Are we still going to the springs after school."
                 j "We all brought a swimmers."
-            
+                p "Yeah."
+                pl "Even without lucien"
+                a "Lucien can come if he wants to. And he will want to come."
+    else:
+        pl "Hey guys!"
 
     return
