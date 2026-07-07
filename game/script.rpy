@@ -861,6 +861,11 @@ label night_time:
             l "So, wanna keep playing?"
             pl "Sure."
             nar "You and Lucien walk back to the game and continue playing, until it is time for dinner."
+            nar "You win most of the games, but this round, the tower is looking really depleted."
+            l "Your turn."
+            pl "Noooo!"
+            nar "You take a brick. The tower falls down instantly as soon as you release the pressure."
+            $ achievement.grant("clumsy")
             jump after_game
 
 label after_game:
@@ -1023,6 +1028,7 @@ label d1:
 
                 "Tell him to stop being a bully":
                     $ karma += 100
+                    $ paul += 1
                     pl "Stop."
                     pl "I'm over it. Your so mean to Paul, and he didn't even do anything. And I don't know if you mean it, but it happens constantly!"
                     nar "Paul heard that."
@@ -1032,7 +1038,8 @@ label d1:
                     pl "Being a bully."
                     l "I'm not. But ok."
                     pl "Good."
-                    nar "You and paul go on a run"
+                    nar "You, paul and Lucien go on a run"
+                    nar "You all arrive at the same time."
                     jump after_run_to_school
 
                 "Watch silently as paul keeps taking hits":
@@ -1123,4 +1130,50 @@ label after_run:
     jump after_night_1
 
 label after_run_to_school:
+    nar "You arrive at school and continue the day as usual."
+    nar "Geography and Math pass quickly, and the bell rings for recess."
+    nar "You meet the group sitting at their usual spot."
+    if lucien =< -5:
+        nar "You notice lucien isn't sitting here"
+        pl "Wheres lucien?"
+        j "I don't know. Havn't seen him all morning."
+        menu:
+            "Do you go look for Lucien and apologise?"
+
+            "Look for him":
+                $ lucien += 1
+                pl "I'm gonna go look for him. Anyone wanna come?"
+                if paul and jaques and arthur => 2:
+                    p "I'll come!"
+                    j "I come along too"
+                    a "Sure."
+                elif paul and jaques => 2:
+                    p "I'll come!"
+                    j "I come along too"
+                elif paul and arthur => 2:
+                    p "I'll come!"
+                    j "I come along too"
+                    a "Sure."
+                elif jaques and arthur => 2:
+                    j "Sure"
+                    a "Don't forget me."
+                elif jauqes => 2:
+                    j "I'll come!"
+                elif arthur => 2:
+                    a "I can come with you."
+                if paul => 2:
+                    p "I'll come!"
+                elif jauqes => 2:
+                    j "I'll come!"
+                elif arthur => 2:
+                    a "I can come with you."
+                else:
+                    nar "nobody responds"
+                    pl "I guess its just me"
+
+            "Let him be by himself":
+                nar "Oh okay. Are we still going to the springs after school."
+                j "We all brought a swimmers."
+            
+
     return
