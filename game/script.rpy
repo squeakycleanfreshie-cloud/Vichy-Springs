@@ -1049,3 +1049,6 @@ label after_run:
     jump after_night_1
     
 label after_run_to_school:
+    $ achievement.grant("enter_le_repli")
+    $ achievement.grant("lost_paul")
+    $ achievement.grant("lucien_friend")
