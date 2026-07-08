@@ -12,6 +12,7 @@ define ta = Character("Ms Dubois")
 define ajp = Character("Arthur, Jaques & Paul")
 define h = Character("Harriet")
 define d = Character("Day")
+define s = Character("Mr Gaspards")
 
 
 image bg home = "#F2D4A7"
@@ -97,7 +98,7 @@ default comp = False
 default fight = False
 
 label start:
-    play music "music.mp3"
+      
     scene bg home
     nar "You wake up. Lips dry, confused about where you are."
     nar "You suddenly remember — you're in your new exchange family's house."
@@ -337,6 +338,19 @@ label morning_tea_1:
     l "That is not true."
     a "It is a little."
     nar "Paul smiles at that — just a little."
+    menu:
+        "Do you say anything to Jaques?"
+
+        "Tell him that's a great story.":
+            $ jaques += 1
+            pl "Jaques, that's a great story. You've got good timing."
+            j "I know. I'm basically the funniest person here."
+            l "Debatable."
+            nar "Jaques grins, pleased with himself."
+
+        "Leave it.":
+            nar "Jaques doesn't seem to need the validation anyway."
+
     l "Okay, moving on."
     pl "What do you guys usually do after school?"
     j "Nothing really."
@@ -373,6 +387,18 @@ label vichy_springs_approach:
     nar "Everyone looks a bit grumpy."
     l "Okay, let's go!"
     nar "You and the group trudge through the thick bush."
+    menu:
+        "Do you say anything to Arthur?"
+
+        "Ask if he's doing okay with the walk.":
+            $ arthur += 1
+            pl "You holding up back there, Arthur?"
+            a "Yeah, just watching my step. Wouldn't want to trip."
+            nar "He seems glad someone checked in."
+
+        "Leave it.":
+            nar "Arthur trudges on without complaint."
+
     nar "Lucien is at the front, holding back branches for everyone."
     nar "He accidentally lets go of one and it hits Paul in the face."
     p "Agh!"
@@ -400,6 +426,18 @@ label vichy_springs_approach:
     j "It's so beautiful."
     p "Yeah."
     a "We can't tell anyone about this."
+    menu:
+        "Do you agree with Arthur?"
+
+        "Agree with him.":
+            $ arthur += 1
+            pl "Arthur's got a point. This should stay between us."
+            a "Exactly. Thank you."
+            nar "Arthur looks relieved someone's on his side."
+
+        "Say nothing.":
+            nar "Nobody backs him up, and Arthur shrugs it off."
+
     l "Why?"
     a "Then everyone will want to come."
     l "Oh. Who cares? Let's swim!"
@@ -430,7 +468,7 @@ label vichy_springs_approach:
             p "Makes sense."
             nar "Nobody talks after that. Everyone soaks in the glimmering afternoon light."
             nar "Paul dips his hands in the water."
-            p "Its really warm."
+            p "It's really warm."
             j "Don't worry Paul, we will go in tomorrow."
             nar "You notice that the boys treat Paul like a younger brother."
             l "Time to go."
@@ -444,6 +482,7 @@ label vichy_springs_approach:
 
         "Go for a swim in your school clothes.":
             $ lucien += 1
+            $ swim = True
             pl "I think we should just go for it. What's there to lose?"
             jump vichy_springs_swim_1
 
@@ -510,6 +549,18 @@ label walk_home_from_swim:
     show paul at center_mid
     show jaques at right_mid
     nar "You and the boys walk home."
+    menu:
+        "Do you say anything to Jaques?"
+
+        "Tell him the cannonball was worth it.":
+            $ jaques += 1
+            pl "That cannonball was worth it, not gonna lie."
+            j "Told you."
+            nar "He looks proud of himself for the rest of the walk."
+
+        "Leave it.":
+            nar "Jaques hums to himself, still pleased with his cannonball."
+
     nar "Eventually, everyone reaches a point where they have to split up."
     l "Come on [name], its time to go."
     pl "Bye everyone."
@@ -887,7 +938,7 @@ label after_game:
     mu "Made with love!"
     nar "You and Lucien laugh"
     mu "So [name], how was your family back at home?"
-    pl "They are ok. But i'm happy to be with you guys."
+    pl "They are ok. But I'm happy to be with you guys."
     mu "Awww."
     mu "Why just ok?"
     l "I..I don't know."
@@ -897,13 +948,14 @@ label after_game:
     pl "Yeah."
     hide josette
     hide lucien
+    hide harriet
     scene bg home
     nar "You get ready to go to bed, clean your teeth. You are really tired."
     nar "You check your watch 10:00PM. Wow, time flies really fast in Vichy."
     nar "You sit in your room and look out the window, reflecting on the day you have had."
     nar "You enjoyed vichy springs, but something about the energy it gave off seemed familiar."
-    nar "You watch the street, no cars or people passing by, toatally empty."
-    nar "So different to you own home, which was full of bustling people."
+    nar "You watch the street, no cars or people passing by, totally empty."
+    nar "So different to your own home, which was full of bustling people."
     pl "I think I prefer it here."
     nar "BANG"
     nar "You turn back looking at the window, trying to spot what happened."
@@ -912,12 +964,12 @@ label after_game:
     nar "All of a sudden they look up at you in the eyes."
     pl "Wha.."
     nar "You dodge down below the window out of fear"
-    nar "After a minuite, you look back up to see if they are still there"
-    nar "they are gone, like they where never there."
+    nar "After a minute, you look back up to see if they are still there"
+    nar "They are gone, like they were never there."
     pl "I must need to go to sleep."
     nar "Even though your heart is pumping from fear,"
     nar "You jump into your bed, and drift to sleep."
-    d "{i}Day 2{i}"
+    d "{i}Day 2{/i}"
     nar "Knock..Knock...Knock"
     if run == True and lucien >= 1:
         show lucien at center_mid
@@ -927,33 +979,33 @@ label after_game:
         pl "Why didn't you tell me?"
         l "I forgot, anyway you will thank me later."
         pl "You are too tired to respond"
-        nar "You and lucien walk downstairs"
+        nar "You and Lucien walk downstairs"
         nar "He quickly begins running."
         pl "No warm up?"
-        l "Your a real fun sponge."
+        l "You're a real fun sponge."
         pl "Nevermind."
         nar "You and him begin to run"
-        nar "You notice that after running for a while in the streets of vichy, your paces and steps syncronise"
+        nar "You notice that after running for a while in the streets of Vichy, your paces and steps synchronise"
         pl "Where are we going?"
         l "For a run"
         nar "He says this in a mocking tone"
         pl "Obviously. Where are you taking me?"
         l "Not to sound like a therapist or anything, but the journey matters more than the result."
         pl "Wise.."
-        nar "You notice how good lucien is at running. You are going at quite a fast, and his breath barley breathes."
+        nar "You notice how good Lucien is at running. You are going at quite a fast pace, and his breath barely quickens."
         menu:
             "Do you compliment Lucien?"
 
             "Compliment Him":
                 $ lucien += 1
                 $ comp = True
-                pl "Your really good at running."
+                pl "You're really good at running."
                 l "Thanks."
                 pl "Do you do any competitions, like cross country?"
-                l "Whats cross country?"
+                l "What's cross country?"
                 pl "Like a running competition."
-                l "Oh no. Nobody nearby runs anything like that, besides i'm not even good enough."
-                pl "Yes you are! Your bearley-"
+                l "Oh no. Nobody nearby runs anything like that, besides I'm not even good enough."
+                pl "Yes you are! You're barely-"
                 nar "You struggle a bit to talk and run"
                 pl "-struggling, and we are going at quite a good pace"
                 pl "You need to find a competition, and win!"
@@ -975,7 +1027,7 @@ label after_game:
 label after_run_q:
     scene bg street
     show lucien at center_mid
-    nar "You and lucien continue running, through the streets of vichy"
+    nar "You and Lucien continue running, through the streets of Vichy"
     nar "Eventually, they open to a beautiful coastline, showered by pink sunrise"
     pl "Vichy is on the Coast!?"
     l "Yeah, you didn't know?"
@@ -992,14 +1044,14 @@ label after_night_1:
     l "[name], Get Up, You are late for school!"
     if run == True:
         pl "I must have fallen back asleep."
-        nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
-        nar "You and lucien quickly run to school."
+        nar "You quickly get changed into your school clothes, and take a piece of toast with fresh jam on it out the door."
+        nar "You and Lucien quickly run to school."
         l "Another run, hey!"
-        nar "You and lucien laugh"
+        nar "You and Lucien laugh"
         jump d1
     else:
-        nar "You quickly get changed into your school clothes, and take a peice of toast with fresh jam on it out the door."
-        nar "You and lucien quickly run to school."
+        nar "You quickly get changed into your school clothes, and take a piece of toast with fresh jam on it out the door."
+        nar "You and Lucien quickly run to school."
         jump d1
 
 label d1:
@@ -1018,8 +1070,8 @@ label d1:
             $ karma -= 100
             pl "Haha. Then lets at least say hello"
             l "Fine"
-            nar "You and lucien run past Paul, and wave at him as you pass."
-            pl "Hey paul! Want to run with us?"
+            nar "You and Lucien run past Paul, and wave at him as you pass."
+            pl "Hey Paul! Want to run with us?"
             p "Sure!"
             nar "His face lights up."
             nar "Lucien looks at you sternly and whispers to you"
@@ -1031,32 +1083,32 @@ label d1:
                     $ karma += 100
                     $ paul += 1
                     pl "Stop."
-                    pl "I'm over it. Your so mean to Paul, and he didn't even do anything. And I don't know if you mean it, but it happens constantly!"
+                    pl "I'm over it. You're so mean to Paul, and he didn't even do anything. And I don't know if you mean it, but it happens constantly!"
                     nar "Paul heard that."
-                    nar "He looks at you. He is embarresed, but slightly shocked."
+                    nar "He looks at you. He is embarrassed, but slightly shocked."
                     nar "You look back up at Lucien. He is silent. He could be angry."
                     l "Stop What?"
                     pl "Being a bully."
                     l "I'm not. But ok."
                     pl "Good."
-                    nar "You, paul and Lucien go on a run"
+                    nar "You, Paul and Lucien go on a run"
                     nar "You all arrive at the same time."
                     jump after_run_to_school
 
-                "Watch silently as paul keeps taking hits":
+                "Watch silently as Paul keeps taking hits":
                     $ paul -= 1
-                    l "You can come paul, but I don't think you would be able to keep up."
+                    l "You can come Paul, but I don't think you would be able to keep up."
                     p "I'll come."
                     nar "Lucien sighs, annoyed."
-                    nar "You, Paul and lucien start to run again."
+                    nar "You, Paul and Lucien start to run again."
                     l "Oh my god, we are so late for school it started 20 minutes ago."
                     l "We are going to have to run faster."
                     nar "So you do run faster. You pick up the pace."
                     pl "Wha-"
-                    nar "Paul is running really fast. Like really fast. He is a way better runner than lucien."
+                    nar "Paul is running really fast. Like really fast. He is a way better runner than Lucien."
                     pl "What were you talking about Lucien? Paul is a great runner?"
                     l "My bad"
-                    nar "You, paul and Lucien run to school and arrive just on time."
+                    nar "You, Paul and Lucien run to school and arrive just on time."
                     jump after_run_to_school
 
         
@@ -1065,26 +1117,26 @@ label d1:
             $ karma += 100
             $ paul += 1
             $ lucien -= 1
-            nar "You and lucien run past Paul, and wave at him as you pass."
-            pl "Hey paul! Want to run with us?"
+            nar "You and Lucien run past Paul, and wave at him as you pass."
+            pl "Hey Paul! Want to run with us?"
             p "Sure!"
             nar "His face lights up."
             nar "Lucien looks at you sternly and whispers to you"
             l "Why did you actually invite him?"
-            pl "What he gonna make a differnce?"
-            l "I don't know...Hes just..Annoying."
-            pl "How can he be annoying, if hes shy?"
-            pl "I think YOU are being annoying. Nobody cares what paul thinks."
-            pl "I want YOU to say sorry to paul, for all this trouble you have put him through, and I don't even know how long it has been going on for."
-            l "Your not my dad."
+            pl "What's he gonna make a difference?"
+            l "I don't know...He's just..Annoying."
+            pl "How can he be annoying, if he's shy?"
+            pl "I think YOU are being annoying. Nobody cares what Paul thinks."
+            pl "I want YOU to say sorry to Paul, for all this trouble you have put him through, and I don't even know how long it has been going on for."
+            l "You're not my dad."
             menu:
                 "Do you say a really mean roast?"
 
                 "Say it.":
                     $ lucien -= 2
-                    $ fight = False
-                    pl "Well maybe you need a new one because I havn't even seen him once."
-                    nar "Luciens eyes water up."
+                    $ fight = True
+                    pl "Well maybe you need a new one because I haven't even seen him once."
+                    nar "Lucien's eyes water up."
                     nar "He looks behind him."
                     l "How dare you!"
                     pl "I'm sorry, I didn't mean it!"
@@ -1092,14 +1144,14 @@ label d1:
                     nar "Lucien runs away from you and Paul"
                     nar "You regret your choice."
                     nar "You feel really bad."
-                    pl "Are you okay paul?"
-                    p "Yeah, i'm fine. Thank you for saying something. Nobody has ever really noticed."
+                    pl "Are you okay Paul?"
+                    p "Yeah, I'm fine. Thank you for saying something. Nobody has ever really noticed."
                     p "But I don't think he means it."
                     pl "How?"
                     p "I kind of got the hint a lot of things are going on at home for him."
                     pl "Oh. Yeah"
                     pl "Do you think he will forgive me?"
-                    p "Yeah. The thing about Lucien is he dosne't care if you do something wrong. He will just move on and forget. Give or take till the end of the day."
+                    p "Yeah. The thing about Lucien is he doesn't care if you do something wrong. He will just move on and forget. Give or take till the end of the day."
                     nar "You have never seen Paul be this open and talk this much."
                     pl "Well lets head off. Can we walk. I'm tired."
                     p "Yeah"
@@ -1110,15 +1162,15 @@ label d1:
                 "Agree with him.":
                     p "I'm sorry. I'm just really tired."
                     nar "Lucien sighs, annoyed."
-                    nar "You, Paul and lucien start to run again."
+                    nar "You, Paul and Lucien start to run again."
                     l "Oh my god, we are so late for school it started 20 minutes ago."
                     l "We are going to have to run faster."
                     nar "So you do run faster. You pick up the pace."
                     pl "Wha-"
-                    nar "Paul is running really fast. Like really fast. He is a way better runner than lucien."
+                    nar "Paul is running really fast. Like really fast. He is a way better runner than Lucien."
                     pl "What were you talking about Lucien? Paul is a great runner?"
                     l "My bad"
-                    nar "You, paul and Lucien run to school and arrive just on time."
+                    nar "You, Paul and Lucien run to school and arrive just on time."
                     jump after_run_to_school
 
 label after_run:
@@ -1127,24 +1179,30 @@ label after_run:
     nar "You open the door"
     l "Shhh!"
     pl "What?"
-    l "Shhh! Be quite"
+    l "Shhh! Be quiet"
     pl "Why?"
     l "I maybe...didn't tell mum about our..run. So maybe we just, don't tell her. Besides, my whole family are late risers."
     pl "Okay. Why didn't you just tell her?"
     l "Because then she would have said no."
-    nar "You and lucien sneak into your rooms"
+    nar "You and Lucien sneak into your rooms"
     nar "Tired because of how early it is, you hop back into bed to rest your eyes....but slowly you drift to sleep."
     hide lucien
     jump after_night_1
 
 label after_run_to_school:
+    hide paul
+    show arthur at far_left
+    show jaques at right_mid
+    show paul at center_mid
+    show lucien at left_mid
     nar "You arrive at school and continue the day as usual."
     nar "Geography and Math pass quickly, and the bell rings for recess."
     nar "You meet the group sitting at their usual spot."
     if lucien <= -5:
-        nar "You notice lucien isn't sitting here"
-        pl "Wheres lucien?"
-        j "I don't know. Havn't seen him all morning."
+        hide lucien
+        nar "You notice Lucien isn't sitting here"
+        pl "Wheres Lucien?"
+        j "I don't know. Haven't seen him all morning."
         menu:
             "Do you go look for Lucien and apologise?"
 
@@ -1155,6 +1213,32 @@ label after_run_to_school:
                     p "I'll come!"
                     j "I come along too"
                     a "Sure."
+                    nar "You, and your friends walk through the corridors of the school."
+                    pl "I forgot to ask, where could we even find him?"
+                    nar "The group look at each other, grinning."
+                    ajp "Mr Gaspards room."
+                    pl "Who is that?"
+                    a "For some reason, Lucien loves this teacher."
+                    p "He's good."
+                    j "But he's not special or anything."
+                    a "Lucien is definitely his favourite student."
+                    j "Like sometimes he spends after school with Lucien"
+                    pl "Doing what?"
+                    a "We don't know. He doesn't invite anyone."
+                    pl "Have you asked to go with him."
+                    p "No. Not really."
+                    a "And we arrive!"
+                    nar "You and the group walk inside his room. Mr Gaspard is sitting at his desk, doing work."
+                    nar "Also sitting at the back of the classroom is Lucien."
+                    pl "Lucien are you okay?"
+                    l "Not how you treated me this morning!"
+                    ajp "I don't think we are part of this..."
+                    s "Is everything alright boys?"
+                    ajp "Yes. We think.."
+                    s "Ok. I'm out of here to get lunch."
+                    nar "Mr Gaspard leaves the room, and shuts the door."
+                    ajp "I think we are going to leave too..."
+                    a "And let you guys sort this out."
                     $ achievement.grant("popular")
                 elif paul >= 2 and jaques >= 2:
                     p "I'll come!"
@@ -1172,19 +1256,19 @@ label after_run_to_school:
                 elif arthur >= 2:
                     a "I can come with you."
                 else:
-                    nar "nobody responds"
-                    pl "I guess its just me"
+                    nar "Nobody responds"
+                    pl "I guess it's just me"
 
             "Let him be by himself":
                 pl "Oh okay. Are we still going to the springs after school."
-                j "We all brought a swimmers."
+                j "We all brought our swimmers."
                 p "Yeah."
-                pl "Even without lucien"
+                pl "Even without Lucien"
                 a "Lucien can come if he wants to. And he will want to come."
                 pl "Ok."
                 nar "The bell rings for class"
                 pl "Wow, that went fast."
-                a "On wednesdays, school is shorter, so class is shorter."
+                a "On Wednesdays, school is shorter, so class is shorter."
                 pl "Why?"
                 a "To help the-"
                 j "To help the teachers plan for their lessons"
@@ -1195,12 +1279,46 @@ label after_run_to_school:
                 pl "Paul, are you a good swimmer?"
                 p "No. I can't go any fast. I like running though."
                 if run == True:
-                    pl "Cool! Me and lucien when on a run this morning."
+                    pl "Cool! Me and Lucien went on a run this morning."
                     pl "You should come sometime."
                     p "Really! That sounds great."
+                    a "Guys, I just remembered I got tickets to the rugby match!"
+                    j "Cool! Who's playing?"
+                    a "France v Australia"
+                    j "Where even is Australia?"
+                    a "How do you not know that?!"
+                    j "I don't pay attention in Geography.."
+                    a "But geography is like the best subject."
+                    j "Nooo It's so boring, especially with Mr Cassidy"
+                    a "I have never had him. Is he bad?"
+                    j "He's SO bad! He forgets stuff all the time, always shows up 20 minutes late to class."
+                    nar "The group laugh."
+                    nar "The bell rings."
+                    a "Time to go. See you after school outside again."
+                    pl "So we are still going to the springs?"
+                    j "Yeah."
+                    jump going_to_vichy_springs_2
                 else:
-                    pl "Thats cool! I think Lucien is also a runner."
+                    pl "That's cool! I think Lucien is also a runner."
                     nar "Paul sighs."
+                    pl "What's wrong?"
+                    p "Nothing"
+                    a "Guys, I just remembered I got tickets to the rugby match!"
+                    j "Cool! Who's playing?"
+                    a "France v Australia"
+                    j "Where even is Australia?"
+                    a "How do you not know that?!"
+                    j "I don't pay attention in Geography.."
+                    a "But geography is like the best subject."
+                    j "Nooo It's so boring, especially with Mr Cassidy"
+                    a "I have never had him. Is he bad?"
+                    j "He's SO bad! He forgets stuff all the time, always shows up 20 minutes late to class."
+                    nar "The group laugh."
+                    nar "The bell rings."
+                    a "Time to go. See you after school outside again."
+                    pl "So we are still going to the springs?"
+                    j "Yeah."
+                    jump going_to_vichy_springs_2
 
     else:
         pl "Hey guys!"
@@ -1212,11 +1330,11 @@ label after_run_to_school:
 
                 "Apologise":
                     pl "Lucien, I'm really sorry about this morning."
-                    l "Thankyou for apologising." 
-                    l "I'm sorry for being such a bad freind to paul. I will say sorry to him."
-                    l "And I know that i'm mean sometimes.."
-                    l "But honestly I don't mean it." 
-                    nar "Your happy that all the drama has been resolved."
+                    l "Thank you for apologising."
+                    l "I'm sorry for being such a bad friend to Paul. I will say sorry to him."
+                    l "And I know that I'm mean sometimes.."
+                    l "But honestly I don't mean it."
+                    nar "You're happy that all the drama has been resolved."
                     pl "So lets head to class."
                     l "Yeah"
                     l "Oh! I almost forgot. Did you pack your swimmers?"
@@ -1233,30 +1351,30 @@ label after_run_to_school:
                     nar "You and the group eat lunch in silence."
                     nar "Arthur remembers something and talks"
                     a "Guys, I just remembered I got tickets to the rugby match!"
-                    j "Cool! Whos playing?"
+                    j "Cool! Who's playing?"
                     a "France v Australia"
                     j "Where even is Australia?"
                     a "How do you not know that?!"
                     j "I don't pay attention in Geography.."
                     a "But geography is like the best subject."
-                    j "Nooo Its so boring, espacially with Mr Casidy"
+                    j "Nooo It's so boring, especially with Mr Cassidy"
                     a "I have never had him. Is he bad?"
-                    j "He SO bad! He forgets stuff all the time, always shows up 20 minutes late to class."
+                    j "He's SO bad! He forgets stuff all the time, always shows up 20 minutes late to class."
                     nar "The group laugh."
                     nar "The bell rings."
                     a "Time to go. See you after school outside again."
                     pl "So we are still going to the springs?"
                     j "Yeah."
-                    a "Lucien your rather quite today. Are you okay?"
+                    a "Lucien you're rather quiet today. Are you okay?"
                     l "Yes. I'm FINE."
                     j "Calm down cranky."
                     l "Go to class."
-                    nar "Athur, jaques and Paul walk away, shocked at Luciens antisocial behavior."
-                    l "So your not going to say sorry?"
+                    nar "Arthur, Jaques and Paul walk away, shocked at Lucien's antisocial behavior."
+                    l "So you're not going to say sorry?"
                     nar "You finally realise that if you don't apologise, Lucien is going to continue to be angry."
                     pl "Lucien, I'm really sorry about this morning."
-                    l "Thankyou. I'm sorry for being such a bad freind to paul. I will say sorry to him." 
-                    nar "Your happy that all the drama has been resolved."
+                    l "Thank you. I'm sorry for being such a bad friend to Paul. I will say sorry to him."
+                    nar "You're happy that all the drama has been resolved."
                     pl "So lets head to class."
                     l "Yeah"
                     l "Oh! I almost forgot. Did you pack your swimmers?"
@@ -1267,8 +1385,8 @@ label after_run_to_school:
 
         else:
             pl "Ready for the springs this afternoon?"
-            nar "Everyone replies, exited for the second outing to the springs"
-            l "Does everbody have their swimmers?"
+            nar "Everyone replies, excited for the second outing to the springs"
+            l "Does everybody have their swimmers?"
             nar "You didn't pack them."
             ajp "Yeah."
             pl "Noo!"
@@ -1278,6 +1396,6 @@ label after_run_to_school:
             jump going_to_vichy_springs_2
                 
 label going_to_vichy_springs_2:
-
+        
 
     return
