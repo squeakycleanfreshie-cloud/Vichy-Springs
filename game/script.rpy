@@ -1706,6 +1706,20 @@ label going_to_vichy_springs_2:
     nar "The pools green lights on the floor are so bright. Pulsing rapidly, shining into your eyes"
     nar "But scattered around are the sillouettes of your freinds."
     nar "You have no air left inside of you, but you must go further"
-    nar "You swim down just a bit deeper, to tough the floor. Its like the floor isn't existent. Its just light"
-    
+    nar "You swim down just a bit deeper, to touch the floor. Its like the floor isn't existent. Its just light"
+    nar "You put your hand out to touch it, and as soon as you make contact, the world arround you dissapears."
+    nar "all vision you have dissapears. A shockwave passes through your body."
+    nar "Thats all you remember..."
+    p "[name]! Wake up, Are you okay?"
+    l "He definetly took it tougher than everybody else"
+    j "He has been out for like 4 hours."
+    nar "You open your eyes, and they are fluded with light."
+    a "He is awake!"
+    pl "Hello?"
+    nar "You look around you. This isn't the springs. This isn't Vichy either."
+    pl "Where am I..?"
+    nar "Another voice speaks. You don't recognise this one though."
+    b "Another One..Must have blacked out."
+    nar "To Be Contninued."
     return
+
