@@ -1181,6 +1181,27 @@ label after_run_to_school:
                 p "Yeah."
                 pl "Even without lucien"
                 a "Lucien can come if he wants to. And he will want to come."
+                pl "Ok."
+                nar "The bell rings for class"
+                pl "Wow, that went fast."
+                a "On wednesdays, school is shorter, so class is shorter."
+                pl "Why?"
+                a "To help the-"
+                j "To help the teachers plan for their lessons"
+                a "Hey!"
+                a "I was going to say that."
+                j "I know. I just did it to annoy you."
+                nar "The group laughs"
+                pl "Paul, are you a good swimmer?"
+                p "No. I can't go any fast. I like running though."
+                if run == True:
+                    pl "Cool! Me and lucien when on a run this morning."
+                    pl "You should come sometime."
+                    p "Really! That sounds great."
+                else:
+                    pl "Thats cool! I think Lucien is also a runner."
+                    nar "Paul sighs."
+
     else:
         pl "Hey guys!"
         j "Hey [name]!"
@@ -1190,6 +1211,22 @@ label after_run_to_school:
                 "Do you apologise?"
 
                 "Apologise":
+                    pl "Lucien, I'm really sorry about this morning."
+                    l "Thankyou for apologising." 
+                    l "I'm sorry for being such a bad freind to paul. I will say sorry to him."
+                    l "And I know that i'm mean sometimes.."
+                    l "But honestly I don't mean it." 
+                    nar "Your happy that all the drama has been resolved."
+                    pl "So lets head to class."
+                    l "Yeah"
+                    l "Oh! I almost forgot. Did you pack your swimmers?"
+                    pl "No! I forgot."
+                    l "Don't worry, I did it for you."
+                    pl "Thanks."
+                    nar "The bell rings for class."
+                    pl "See everyone after school!"
+                    jump going_to_vichy_springs_2
+                    
 
                 "Be stubborn":
                     $ achievement.grant("antisocial") 
@@ -1217,10 +1254,30 @@ label after_run_to_school:
                     nar "Athur, jaques and Paul walk away, shocked at Luciens antisocial behavior."
                     l "So your not going to say sorry?"
                     nar "You finally realise that if you don't apologise, Lucien is going to continue to be angry."
-                    
-        else:
+                    pl "Lucien, I'm really sorry about this morning."
+                    l "Thankyou. I'm sorry for being such a bad freind to paul. I will say sorry to him." 
+                    nar "Your happy that all the drama has been resolved."
+                    pl "So lets head to class."
+                    l "Yeah"
+                    l "Oh! I almost forgot. Did you pack your swimmers?"
+                    pl "No! I forgot."
+                    l "Don't worry, I did it for you."
+                    pl "Thanks."
+                    jump going_to_vichy_springs_2
 
+        else:
+            pl "Ready for the springs this afternoon?"
+            nar "Everyone replies, exited for the second outing to the springs"
+            l "Does everbody have their swimmers?"
+            nar "You didn't pack them."
+            ajp "Yeah."
+            pl "Noo!"
+            l "Don't worry, I did it for you"
+            l "Great. Meet same place as usual after class."
+            ajp "Good."
+            jump going_to_vichy_springs_2
                 
+label going_to_vichy_springs_2:
 
 
     return
