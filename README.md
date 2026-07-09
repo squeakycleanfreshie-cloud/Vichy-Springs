@@ -51,6 +51,8 @@ You should try to get all 9 Achivments though (here are there names):
 - Popular
 - Antisocial
 
+Note. Not all are achivable as of right now.
+
 ## Roadmap
 In the near future, I plan to add:
 - Multiple Endings
