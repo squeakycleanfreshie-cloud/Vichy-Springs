@@ -97,10 +97,14 @@ default game = False
 default comp = False
 default fight = False
 default look = False
+default defpass = "0"
 
 label start:
       
+    
     scene bg home
+    $ devpass = renpy.input("Enter the devpass iykyk")
+    $ devpass = devpass.strip()
     nar "You wake up. Lips dry, confused about where you are."
     nar "You suddenly remember — you're in your new exchange family's house."
     nar "You get out of bed and get ready to walk downstairs."
@@ -1659,8 +1663,8 @@ label going_to_vichy_springs_2:
     j "No. I don't have it."
     l "Then were is it?"
     j "My dog ate it. Like seriously!"
-    nar "The group is uninpressed at jaques."
-    nar "Athur stops to tie his shoelace"
+    nar "The group is unimpressed at Jaques."
+    nar "Arthur stops to tie his shoelace"
     nar "Everybody continues walking"
     a "You know, I could vanish right now and you'd all be at the springs before you noticed"
     j "Thats not true-"
@@ -1721,5 +1725,7 @@ label going_to_vichy_springs_2:
     nar "Another voice speaks. You don't recognise this one though."
     b "Another One..Must have blacked out."
     nar "To Be Contninued."
+    if devpass == "Konami"
+        nar "DEVMODE STARTED"
     return
 
